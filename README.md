@@ -29,9 +29,11 @@ publication, unless a permission from the repo owner is given.**
 
 **If you use this repo for your academic research, we require a citation to the following.**
 
+```
  @manual{github,
       title  = "LAMMPS for Coagulation Cascade Modeling",
       author = "Yixiang Deng",
       url    = "https://github.com/yixiangD/coagulation_cascade",
       year   = "2020"
 }
+```
