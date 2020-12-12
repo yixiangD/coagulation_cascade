@@ -1,4 +1,4 @@
-# Coagulation Cascade
+# LAMMPS for Coagulation Cascade Modeling
 ## Compile source code
 ```
 >> cd src/
