@@ -1,0 +1,636 @@
+angle_area_volume.cpp:                modify->fix[stress_list[k]]->virial4(i1, i2, i3, ff);
+atom.cpp:  for (ifix = 0; ifix < modify->nfix; ifix++)
+atom.cpp:    if (modify->fix[ifix] == NULL) break;
+atom.cpp:  for (ifix = 0; ifix < modify->nfix; ifix++)
+atom.cpp:    if (strcmp(id,modify->fix[ifix]->id) == 0) break;
+atom_vec_angle.cpp:      modify->fix[atom->extra_grow[iextra]]->grow_arrays(nmax);
+atom_vec_angle.cpp:      modify->fix[atom->extra_grow[iextra]]->copy_arrays(i,j);
+atom_vec_angle.cpp:      m += modify->fix[atom->extra_grow[iextra]]->pack_exchange(i,&buf[m]);
+atom_vec_angle.cpp:      m += modify->fix[atom->extra_grow[iextra]]->
+atom_vec_angle.cpp:	n += modify->fix[atom->extra_restart[iextra]]->size_restart(i);
+atom_vec_angle.cpp:      m += modify->fix[atom->extra_restart[iextra]]->pack_restart(i,&buf[m]);
+atom_vec_atomic.cpp:      modify->fix[atom->extra_grow[iextra]]->grow_arrays(nmax);
+atom_vec_atomic.cpp:      modify->fix[atom->extra_grow[iextra]]->copy_arrays(i,j);
+atom_vec_atomic.cpp:      m += modify->fix[atom->extra_grow[iextra]]->pack_exchange(i,&buf[m]);
+atom_vec_atomic.cpp:      m += modify->fix[atom->extra_grow[iextra]]->
+atom_vec_atomic.cpp:	n += modify->fix[atom->extra_restart[iextra]]->size_restart(i);
+atom_vec_atomic.cpp:      m += modify->fix[atom->extra_restart[iextra]]->pack_restart(i,&buf[m]);
+atom_vec_bond.cpp:      modify->fix[atom->extra_grow[iextra]]->grow_arrays(nmax);
+atom_vec_bond.cpp:      modify->fix[atom->extra_grow[iextra]]->copy_arrays(i,j);
+atom_vec_bond.cpp:      m += modify->fix[atom->extra_grow[iextra]]->pack_exchange(i,&buf[m]);
+atom_vec_bond.cpp:      m += modify->fix[atom->extra_grow[iextra]]->
+atom_vec_bond.cpp:	n += modify->fix[atom->extra_restart[iextra]]->size_restart(i);
+atom_vec_bond.cpp:      m += modify->fix[atom->extra_restart[iextra]]->pack_restart(i,&buf[m]);
+atom_vec_cc_atomic.cpp:			modify->fix[atom->extra_grow[iextra]]->grow_arrays(nmax);
+atom_vec_cc_atomic.cpp:			modify->fix[atom->extra_grow[iextra]]->copy_arrays(i,j);
+atom_vec_cc_atomic.cpp:			m += modify->fix[atom->extra_grow[iextra]]->pack_exchange(i,&buf[m]);
+atom_vec_cc_atomic.cpp:			m += modify->fix[atom->extra_grow[iextra]]->
+atom_vec_cc_atomic.cpp:	n += modify->fix[atom->extra_restart[iextra]]->size_restart(i);
+atom_vec_cc_atomic.cpp:			m += modify->fix[atom->extra_restart[iextra]]->pack_restart(i,&buf[m]);
+atom_vec_cc_full.cpp:      modify->fix[atom->extra_grow[iextra]]->grow_arrays(nmax);
+atom_vec_cc_full.cpp:      modify->fix[atom->extra_grow[iextra]]->copy_arrays(i,j);
+atom_vec_cc_full.cpp:      m += modify->fix[atom->extra_grow[iextra]]->pack_exchange(i,&buf[m]);
+atom_vec_cc_full.cpp:      m += modify->fix[atom->extra_grow[iextra]]->
+atom_vec_cc_full.cpp:	n += modify->fix[atom->extra_restart[iextra]]->size_restart(i);
+atom_vec_cc_full.cpp:      m += modify->fix[atom->extra_restart[iextra]]->pack_restart(i,&buf[m]);
+atom_vec_charge.cpp:      modify->fix[atom->extra_grow[iextra]]->grow_arrays(nmax);
+atom_vec_charge.cpp:      modify->fix[atom->extra_grow[iextra]]->copy_arrays(i,j);
+atom_vec_charge.cpp:      m += modify->fix[atom->extra_grow[iextra]]->pack_exchange(i,&buf[m]);
+atom_vec_charge.cpp:      m += modify->fix[atom->extra_grow[iextra]]->
+atom_vec_charge.cpp:	n += modify->fix[atom->extra_restart[iextra]]->size_restart(i);
+atom_vec_charge.cpp:      m += modify->fix[atom->extra_restart[iextra]]->pack_restart(i,&buf[m]);
+atom_vec_full.cpp:      modify->fix[atom->extra_grow[iextra]]->grow_arrays(nmax);
+atom_vec_full.cpp:      modify->fix[atom->extra_grow[iextra]]->copy_arrays(i,j);
+atom_vec_full.cpp:      m += modify->fix[atom->extra_grow[iextra]]->pack_exchange(i,&buf[m]);
+atom_vec_full.cpp:      m += modify->fix[atom->extra_grow[iextra]]->
+atom_vec_full.cpp:	n += modify->fix[atom->extra_restart[iextra]]->size_restart(i);
+atom_vec_full.cpp:      m += modify->fix[atom->extra_restart[iextra]]->pack_restart(i,&buf[m]);
+atom_vec_hybrid.cpp:      modify->fix[atom->extra_grow[iextra]]->grow_arrays(nmax);
+atom_vec_hybrid.cpp:      modify->fix[atom->extra_grow[iextra]]->copy_arrays(i,j);
+atom_vec_hybrid.cpp:      m += modify->fix[atom->extra_grow[iextra]]->pack_exchange(i,&buf[m]);
+atom_vec_hybrid.cpp:      m += modify->fix[atom->extra_grow[iextra]]->
+atom_vec_hybrid.cpp:	n += modify->fix[atom->extra_restart[iextra]]->size_restart(i);
+atom_vec_hybrid.cpp:      m += modify->fix[atom->extra_restart[iextra]]->pack_restart(i,&buf[m]);
+atom_vec_molecular.cpp:      modify->fix[atom->extra_grow[iextra]]->grow_arrays(nmax);
+atom_vec_molecular.cpp:      modify->fix[atom->extra_grow[iextra]]->copy_arrays(i,j);
+atom_vec_molecular.cpp:      m += modify->fix[atom->extra_grow[iextra]]->pack_exchange(i,&buf[m]);
+atom_vec_molecular.cpp:      m += modify->fix[atom->extra_grow[iextra]]->
+atom_vec_molecular.cpp:	n += modify->fix[atom->extra_restart[iextra]]->size_restart(i);
+atom_vec_molecular.cpp:      m += modify->fix[atom->extra_restart[iextra]]->pack_restart(i,&buf[m]);
+bond_cellular.cpp:  	if (nt == modify->fix[fixchecklist[i]]->next_reneighbor){
+bond_cellular.cpp:        modify->fix[stress_list[k]]->virial3(i1, i2, ff);
+bond_cellular.cpp:  fixchecklist = new int[modify->nfix];
+bond_cellular.cpp:  for (int i = 0; i < modify->nfix; i++)
+bond_cellular.cpp:    if (modify->fix[i]->force_reneighbor)
+bond_wlc_pow_all_visc.cpp:	      modify->fix[stress_list[k]]->virial3(i1, i2, ff);
+bond_wlc_pow.cpp:        modify->fix[stress_list[k]]->virial3(i1, i2, ff);
+change_box.cpp:  for (int i = 0; i < modify->nfix; i++)
+change_box.cpp:    if (modify->fix[i]->no_change_box)
+comm.cpp:  for (int i = 0; i < modify->nfix; i++) {
+comm.cpp:    maxforward = MAX(maxforward,modify->fix[i]->comm_forward);
+comm.cpp:    maxreverse = MAX(maxreverse,modify->fix[i]->comm_reverse);
+comm.cpp:  for (int i = 0; i < modify->ncompute; i++) {
+comm.cpp:    maxforward = MAX(maxforward,modify->compute[i]->comm_forward);
+comm.cpp:    maxreverse = MAX(maxreverse,modify->compute[i]->comm_reverse);
+compute_centro_atom.cpp:  for (int i = 0; i < modify->ncompute; i++)
+compute_centro_atom.cpp:    if (strcmp(modify->compute[i]->style,"centro/atom") == 0) count++;
+compute_cna_atom.cpp:  for (int i = 0; i < modify->ncompute; i++)
+compute_cna_atom.cpp:    if (strcmp(modify->compute[i]->style,"cna/atom") == 0) count++;
+compute_coord_atom.cpp:  for (int i = 0; i < modify->ncompute; i++)
+compute_coord_atom.cpp:    if (strcmp(modify->compute[i]->style,"coord/atom") == 0) count++;
+compute_displace_atom.cpp:  int ifix = modify->find_fix(id_fix);
+compute_displace_atom.cpp:  int ifix = modify->find_fix(id_fix);
+compute_displace_atom.cpp:  fix = modify->fix[ifix];
+compute_ke_atom.cpp:  for (int i = 0; i < modify->ncompute; i++)
+compute_ke_atom.cpp:    if (strcmp(modify->compute[i]->style,"ke/atom") == 0) count++;
+compute_pe.cpp:  if (thermoflag && modify->n_thermo_energy) scalar += modify->thermo_energy();
+compute_pressure.cpp:  int icompute = modify->find_compute(id_pre);
+compute_pressure.cpp:  if (modify->compute[icompute]->tempflag == 0)
+compute_pressure.cpp:  int icompute = modify->find_compute(id_pre);
+compute_pressure.cpp:  temperature = modify->compute[icompute];
+compute_pressure.cpp:    for (int i = 0; i < modify->nfix; i++)
+compute_pressure.cpp:      if (modify->fix[i]->virial_flag) nvirial++;
+compute_pressure.cpp:      for (int i = 0; i < modify->nfix; i++)
+compute_pressure.cpp:	if (modify->fix[i]->virial_flag)
+compute_pressure.cpp:	  vptr[nvirial++] = modify->fix[i]->virial;
+compute_reduce.cpp:      int icompute = modify->find_compute(ids[i]);
+compute_reduce.cpp:      if (modify->compute[icompute]->peratom_flag == 0)
+compute_reduce.cpp:      if (argindex[i] == 0 && modify->compute[icompute]->size_peratom != 0)
+compute_reduce.cpp:      if (argindex[i] && modify->compute[icompute]->size_peratom == 0)
+compute_reduce.cpp:      int ifix = modify->find_fix(ids[i]);
+compute_reduce.cpp:      if (modify->fix[ifix]->peratom_flag == 0)
+compute_reduce.cpp:      if (argindex[i] == 0 && modify->fix[ifix]->size_peratom != 0)
+compute_reduce.cpp:      if (argindex[i] && modify->fix[ifix]->size_peratom == 0)
+compute_reduce.cpp:      int icompute = modify->find_compute(ids[m]);
+compute_reduce.cpp:      int ifix = modify->find_fix(ids[m]);
+compute_reduce.cpp:    Compute *compute = modify->compute[n];
+compute_reduce.cpp:    if (update->ntimestep % modify->fix[n]->peratom_freq)
+compute_reduce.cpp:      double *fix_scalar = modify->fix[n]->scalar_atom;
+compute_reduce.cpp:      double **fix_vector = modify->fix[n]->vector_atom;
+compute_reduce_region.cpp:    Compute *compute = modify->compute[n];
+compute_reduce_region.cpp:    if (update->ntimestep % modify->fix[n]->peratom_freq)
+compute_reduce_region.cpp:      double *fix_scalar = modify->fix[n]->scalar_atom;
+compute_reduce_region.cpp:      double **fix_vector = modify->fix[n]->vector_atom;
+compute_stress_atom.cpp:    for (int i = 0; i < modify->nfix; i++)
+compute_stress_atom.cpp:      if (modify->fix[i]->virial_flag) {
+compute_stress_atom.cpp:	double **vatom = modify->fix[i]->vatom;
+compute_temp_com.cpp:  for (int i = 0; i < modify->nfix; i++)
+compute_temp_com.cpp:    fix_dof += modify->fix[i]->dof(igroup);
+compute_temp.cpp:  for (int i = 0; i < modify->nfix; i++)
+compute_temp.cpp:    fix_dof += modify->fix[i]->dof(igroup);
+compute_temp_deform.cpp:  for (i = 0; i < modify->nfix; i++)
+compute_temp_deform.cpp:    fix_dof += modify->fix[i]->dof(igroup);
+compute_temp_deform.cpp:  for (i = 0; i < modify->nfix; i++)
+compute_temp_deform.cpp:    if (strcmp(modify->fix[i]->style,"deform") == 0) {
+compute_temp_deform.cpp:      if (((FixDeform *) modify->fix[i])->remapflag == X_REMAP && 
+compute_temp_deform.cpp:  if (i == modify->nfix && comm->me == 0)
+compute_temp_partial.cpp:  for (int i = 0; i < modify->nfix; i++)
+compute_temp_partial.cpp:    fix_dof += modify->fix[i]->dof(igroup);
+compute_temp_profile.cpp:  for (int i = 0; i < modify->nfix; i++)
+compute_temp_profile.cpp:    fix_dof += modify->fix[i]->dof(igroup);
+compute_temp_ramp.cpp:  for (int i = 0; i < modify->nfix; i++)
+compute_temp_ramp.cpp:    fix_dof += modify->fix[i]->dof(igroup);
+compute_temp_sphere.cpp:    i = modify->find_compute(id_bias);
+compute_temp_sphere.cpp:    tbias = modify->compute[i];
+compute_temp_sphere.cpp:  for (i = 0; i < modify->nfix; i++)
+compute_temp_sphere.cpp:    fix_dof += modify->fix[i]->dof(igroup);
+dihedral_bend.cpp:        modify->fix[stress_list[k]]->virial5(i1, i2, i3, i4, ff);
+domain.cpp:  for (int i = 0; i < modify->nfix; i++)
+domain.cpp:    if (modify->fix[i]->box_change) box_change = 1;
+domain.cpp:  for (int i = 0; i < modify->nfix; i++)
+domain.cpp:    if (strcmp(modify->fix[i]->style,"deform") == 0) {
+domain.cpp:      if (((FixDeform *) modify->fix[i])->remapflag == V_REMAP) {
+domain.cpp:	deform_groupbit = modify->fix[i]->groupbit;
+dump_cc.cpp:    icompute = modify->find_compute(id_compute[i]);
+dump_cc.cpp:    compute[i] = modify->compute[icompute];
+dump_cc.cpp:    ifix = modify->find_fix(id_fix[i]);
+dump_cc.cpp:    fix[i] = modify->fix[ifix];
+dump_cc.cpp:    if (nevery % modify->fix[ifix]->peratom_freq)
+dump_cc.cpp:      n = modify->find_compute(suffix);
+dump_cc.cpp:      if (modify->compute[n]->peratom_flag == 0)
+dump_cc.cpp:      if (argindex[i] == 0 && modify->compute[n]->size_peratom > 0)
+dump_cc.cpp:      if (argindex[i] > 0 && modify->compute[n]->size_peratom == 0)
+dump_cc.cpp:	  argindex[i] > modify->compute[n]->size_peratom)
+dump_cc.cpp:      n = modify->find_fix(suffix);
+dump_cc.cpp:      if (modify->fix[n]->peratom_flag == 0)
+dump_cc.cpp:      if (argindex[i] == 0 && modify->fix[n]->size_peratom > 0)
+dump_cc.cpp:      if (argindex[i] > 0 && modify->fix[n]->size_peratom == 0)
+dump_cc.cpp:	  argindex[i] > modify->fix[n]->size_peratom)
+dump_cc.cpp:      n = modify->find_compute(suffix);
+dump_cc.cpp:      if (modify->compute[n]->peratom_flag == 0)
+dump_cc.cpp:	  modify->compute[n]->size_peratom > 0)
+dump_cc.cpp:	  modify->compute[n]->size_peratom == 0)
+dump_cc.cpp:	  argindex[nfield+nthresh] > modify->compute[n]->size_peratom)
+dump_cc.cpp:      n = modify->find_fix(suffix);
+dump_cc.cpp:      if (modify->fix[n]->peratom_flag == 0)
+dump_cc.cpp:	  modify->fix[n]->size_peratom > 0)
+dump_cc.cpp:	  modify->fix[n]->size_peratom == 0)
+dump_cc.cpp:	  argindex[nfield+nthresh] > modify->fix[n]->size_peratom)
+dump_custom.cpp:    icompute = modify->find_compute(id_compute[i]);
+dump_custom.cpp:    compute[i] = modify->compute[icompute];
+dump_custom.cpp:    ifix = modify->find_fix(id_fix[i]);
+dump_custom.cpp:    fix[i] = modify->fix[ifix];
+dump_custom.cpp:    if (nevery % modify->fix[ifix]->peratom_freq)
+dump_custom.cpp:      n = modify->find_compute(suffix);
+dump_custom.cpp:      if (modify->compute[n]->peratom_flag == 0)
+dump_custom.cpp:      if (argindex[i] == 0 && modify->compute[n]->size_peratom > 0)
+dump_custom.cpp:      if (argindex[i] > 0 && modify->compute[n]->size_peratom == 0)
+dump_custom.cpp:	  argindex[i] > modify->compute[n]->size_peratom)
+dump_custom.cpp:      n = modify->find_fix(suffix);
+dump_custom.cpp:      if (modify->fix[n]->peratom_flag == 0)
+dump_custom.cpp:      if (argindex[i] == 0 && modify->fix[n]->size_peratom > 0)
+dump_custom.cpp:      if (argindex[i] > 0 && modify->fix[n]->size_peratom == 0)
+dump_custom.cpp:	  argindex[i] > modify->fix[n]->size_peratom)
+dump_custom.cpp:      n = modify->find_compute(suffix);
+dump_custom.cpp:      if (modify->compute[n]->peratom_flag == 0)
+dump_custom.cpp:	  modify->compute[n]->size_peratom > 0)
+dump_custom.cpp:	  modify->compute[n]->size_peratom == 0)
+dump_custom.cpp:	  argindex[nfield+nthresh] > modify->compute[n]->size_peratom)
+dump_custom.cpp:      n = modify->find_fix(suffix);
+dump_custom.cpp:      if (modify->fix[n]->peratom_flag == 0)
+dump_custom.cpp:	  modify->fix[n]->size_peratom > 0)
+dump_custom.cpp:	  modify->fix[n]->size_peratom == 0)
+dump_custom.cpp:	  argindex[nfield+nthresh] > modify->fix[n]->size_peratom)
+fix_ave_atom.cpp:      int icompute = modify->find_compute(ids[i]);
+fix_ave_atom.cpp:      if (modify->compute[icompute]->peratom_flag == 0)
+fix_ave_atom.cpp:      if (argindex[i] == 0 && modify->compute[icompute]->size_peratom != 0)
+fix_ave_atom.cpp:      if (argindex[i] && modify->compute[icompute]->size_peratom == 0)
+fix_ave_atom.cpp:      if (argindex[i] && argindex[i] > modify->compute[icompute]->size_peratom)
+fix_ave_atom.cpp:      int ifix = modify->find_fix(ids[i]);
+fix_ave_atom.cpp:      if (modify->fix[ifix]->peratom_flag == 0)
+fix_ave_atom.cpp:      if (argindex[i] && modify->fix[ifix]->size_peratom != 0)
+fix_ave_atom.cpp:      if (argindex[i] && modify->fix[ifix]->size_peratom == 0)
+fix_ave_atom.cpp:      if (argindex[i] && argindex[i] > modify->fix[ifix]->size_peratom)
+fix_ave_atom.cpp:  modify->addstep_compute_all(nvalid);
+fix_ave_atom.cpp:      int icompute = modify->find_compute(ids[m]);
+fix_ave_atom.cpp:      int ifix = modify->find_fix(ids[m]);
+fix_ave_atom.cpp:      if (nevery % modify->fix[ifix]->peratom_freq)
+fix_ave_atom.cpp:  modify->clearstep_compute();
+fix_ave_atom.cpp:      Compute *compute = modify->compute[n];
+fix_ave_atom.cpp:	double *fix_scalar = modify->fix[n]->scalar_atom;
+fix_ave_atom.cpp:	double **fix_vector = modify->fix[n]->vector_atom;
+fix_ave_atom.cpp:    modify->addstep_compute(nvalid);
+fix_ave_atom.cpp:  modify->addstep_compute(nvalid);
+fix_ave_spatial.cpp:      int icompute = modify->find_compute(ids[i]);
+fix_ave_spatial.cpp:      if (modify->compute[icompute]->peratom_flag == 0)
+fix_ave_spatial.cpp:      if (argindex[i] == 0 && modify->compute[icompute]->size_peratom != 0)
+fix_ave_spatial.cpp:      if (argindex[i] && modify->compute[icompute]->size_peratom == 0)
+fix_ave_spatial.cpp:      if (argindex[i] && argindex[i] > modify->compute[icompute]->size_peratom)
+fix_ave_spatial.cpp:      int ifix = modify->find_fix(ids[i]);
+fix_ave_spatial.cpp:      if (modify->fix[ifix]->peratom_flag == 0)
+fix_ave_spatial.cpp:      if (argindex[i] && modify->fix[ifix]->size_peratom != 0)
+fix_ave_spatial.cpp:      if (argindex[i] && modify->fix[ifix]->size_peratom == 0)
+fix_ave_spatial.cpp:      if (argindex[i] && argindex[i] > modify->fix[ifix]->size_peratom)
+fix_ave_spatial.cpp:  modify->addstep_compute_all(nvalid);
+fix_ave_spatial.cpp:      int icompute = modify->find_compute(ids[m]);
+fix_ave_spatial.cpp:      int ifix = modify->find_fix(ids[m]);
+fix_ave_spatial.cpp:      if (nevery % modify->fix[ifix]->peratom_freq)
+fix_ave_spatial.cpp:  modify->clearstep_compute();
+fix_ave_spatial.cpp:      Compute *compute = modify->compute[n];
+fix_ave_spatial.cpp:      double *scalar = modify->fix[n]->scalar_atom;
+fix_ave_spatial.cpp:      double **vector = modify->fix[n]->vector_atom;
+fix_ave_spatial.cpp:    modify->addstep_compute(nvalid);
+fix_ave_spatial.cpp:  modify->addstep_compute(nvalid);
+fix_ave_time.cpp:      int icompute = modify->find_compute(ids[i]);
+fix_ave_time.cpp:      if (argindex[i] == 0 && modify->compute[icompute]->scalar_flag == 0)
+fix_ave_time.cpp:      if (argindex[i] && modify->compute[icompute]->vector_flag == 0)
+fix_ave_time.cpp:      if (argindex[i] && argindex[i] > modify->compute[icompute]->size_vector)
+fix_ave_time.cpp:      int ifix = modify->find_fix(ids[i]);
+fix_ave_time.cpp:      if (argindex[i] == 0 && modify->fix[ifix]->scalar_flag == 0)
+fix_ave_time.cpp:      if (argindex[i] && modify->fix[ifix]->vector_flag == 0)
+fix_ave_time.cpp:      if (argindex[i] && argindex[i] > modify->fix[ifix]->size_vector)
+fix_ave_time.cpp:      Compute *compute = modify->compute[modify->find_compute(ids[0])];
+fix_ave_time.cpp:      Fix *fix = modify->fix[modify->find_fix(ids[0])];
+fix_ave_time.cpp:	Compute *compute = modify->compute[modify->find_compute(ids[i])];
+fix_ave_time.cpp:	Fix *fix = modify->fix[modify->find_fix(ids[i])];
+fix_ave_time.cpp:  modify->addstep_compute_all(nvalid);
+fix_ave_time.cpp:      int icompute = modify->find_compute(ids[i]);
+fix_ave_time.cpp:      int ifix = modify->find_fix(ids[i]);
+fix_ave_time.cpp:      if (nevery % modify->fix[ifix]->scalar_vector_freq)
+fix_ave_time.cpp:  modify->clearstep_compute();
+fix_ave_time.cpp:      Compute *compute = modify->compute[m];
+fix_ave_time.cpp:	vector[i] += modify->fix[m]->compute_scalar();
+fix_ave_time.cpp:	vector[i] += modify->fix[m]->compute_vector(argindex[i]-1);
+fix_ave_time.cpp:    modify->addstep_compute(nvalid);
+fix_ave_time.cpp:  modify->addstep_compute(nvalid);
+fix_bond_swap.cpp:  modify->add_compute(3,newarg);
+fix_bond_swap.cpp:  if (tflag) modify->delete_compute(id_temp);
+fix_bond_swap.cpp:  int icompute = modify->find_compute(id_temp);
+fix_bond_swap.cpp:  temperature = modify->compute[icompute];
+fix_bond_swap.cpp:      modify->delete_compute(id_temp);
+fix_bond_swap.cpp:    int icompute = modify->find_compute(id_temp);
+fix_bond_swap.cpp:    temperature = modify->compute[icompute];
+fix_box_relax.cpp:  modify->add_compute(3,newarg);
+fix_box_relax.cpp:  modify->add_compute(5,newarg);
+fix_box_relax.cpp:  if (tflag) modify->delete_compute(id_temp);
+fix_box_relax.cpp:  if (pflag) modify->delete_compute(id_press);
+fix_box_relax.cpp:  int icompute = modify->find_compute(id_temp);
+fix_box_relax.cpp:  temperature = modify->compute[icompute];
+fix_box_relax.cpp:  icompute = modify->find_compute(id_press);
+fix_box_relax.cpp:  pressure = modify->compute[icompute];
+fix_box_relax.cpp:  for (int i = 0; i < modify->nfix; i++)
+fix_box_relax.cpp:    if (modify->fix[i]->rigid_flag) nrigid++;
+fix_box_relax.cpp:    for (int i = 0; i < modify->nfix; i++)
+fix_box_relax.cpp:      if (modify->fix[i]->rigid_flag) rfix[nrigid++] = i;
+fix_box_relax.cpp:      modify->fix[rfix[i]]->deform(0);
+fix_box_relax.cpp:      modify->fix[rfix[i]]->deform(1);
+fix_box_relax.cpp:      modify->delete_compute(id_temp);
+fix_box_relax.cpp:    int icompute = modify->find_compute(arg[1]);
+fix_box_relax.cpp:    temperature = modify->compute[icompute];
+fix_box_relax.cpp:    icompute = modify->find_compute(id_press);
+fix_box_relax.cpp:    delete [] modify->compute[icompute]->id_pre;
+fix_box_relax.cpp:    modify->compute[icompute]->id_pre = new char[n];
+fix_box_relax.cpp:    strcpy(modify->compute[icompute]->id_pre,id_temp);
+fix_box_relax.cpp:      modify->delete_compute(id_press);
+fix_box_relax.cpp:    int icompute = modify->find_compute(arg[1]);
+fix_box_relax.cpp:    pressure = modify->compute[icompute];
+fix_cc_reaction.cpp:	for (ifix = 0; ifix < modify->nfix; ifix++)
+fix_cc_reaction.cpp:		if (strcmp("molecule",modify->fix[ifix]->style) == 0) break;
+fix_cc_reaction.cpp:	if (ifix == modify->nfix) error->one("FixMolecule style is needed.");
+fix_cc_reaction.cpp:	printf("ifix is %d id is %s \n",ifix,modify->fix[ifix]->style);
+fix_cc_reaction.cpp:	//molecule = dynamic_cast<FixMolecule *> (modify->fix[ifix]);
+fix_deform.cpp:  for (int i = 0; i < modify->nfix; i++)
+fix_deform.cpp:    if (strcmp(modify->fix[i]->style,"deform") == 0) count++;
+fix_deform.cpp:  for (int i = 0; i < modify->nfix; i++)
+fix_deform.cpp:    if (modify->fix[i]->rigid_flag) nrigid++;
+fix_deform.cpp:    for (int i = 0; i < modify->nfix; i++)
+fix_deform.cpp:      if (modify->fix[i]->rigid_flag) rfix[nrigid++] = i;
+fix_deform.cpp:	modify->fix[rfix[i]]->deform(0);
+fix_deform.cpp:	modify->fix[rfix[i]]->deform(1);
+fix_dt_reset.cpp:  for (int i = 0; i < modify->nfix; i++) modify->fix[i]->reset_dt();
+fix_langevin.cpp:    int icompute = modify->find_compute(id_temp);
+fix_langevin.cpp:    temperature = modify->compute[icompute];
+fix_msd.cpp:  for (int i = 0; i < modify->nfix; i++)
+fix_msd.cpp:    if (strcmp(modify->fix[i]->style,"msd") == 0) count++;
+fix_nph.cpp:  modify->add_compute(3,newarg);
+fix_nph.cpp:  modify->add_compute(4,newarg);
+fix_nph.cpp:  if (tflag) modify->delete_compute(id_temp);
+fix_nph.cpp:  if (pflag) modify->delete_compute(id_press);
+fix_nph.cpp:  for (int i = 0; i < modify->nfix; i++)
+fix_nph.cpp:    if (strcmp(modify->fix[i]->style,"deform") == 0) {
+fix_nph.cpp:      int *dimflag = ((FixDeform *) modify->fix[i])->dimflag;
+fix_nph.cpp:  int icompute = modify->find_compute(id_temp);
+fix_nph.cpp:  temperature = modify->compute[icompute];
+fix_nph.cpp:  icompute = modify->find_compute(id_press);
+fix_nph.cpp:  pressure = modify->compute[icompute];
+fix_nph.cpp:  for (int i = 0; i < modify->nfix; i++)
+fix_nph.cpp:    if (modify->fix[i]->rigid_flag) nrigid++;
+fix_nph.cpp:    for (int i = 0; i < modify->nfix; i++)
+fix_nph.cpp:      if (modify->fix[i]->rigid_flag) rfix[nrigid++] = i;
+fix_nph.cpp:      modify->fix[rfix[i]]->deform(0);
+fix_nph.cpp:      modify->fix[rfix[i]]->deform(1);
+fix_nph.cpp:      modify->delete_compute(id_temp);
+fix_nph.cpp:    int icompute = modify->find_compute(id_temp);
+fix_nph.cpp:    temperature = modify->compute[icompute];
+fix_nph.cpp:    icompute = modify->find_compute(id_press);
+fix_nph.cpp:    delete [] modify->compute[icompute]->id_pre;
+fix_nph.cpp:    modify->compute[icompute]->id_pre = new char[n];
+fix_nph.cpp:    strcpy(modify->compute[icompute]->id_pre,id_temp);
+fix_nph.cpp:      modify->delete_compute(id_press);
+fix_nph.cpp:    int icompute = modify->find_compute(id_press);
+fix_nph.cpp:    pressure = modify->compute[icompute];
+fix_npt.cpp:  modify->add_compute(3,newarg);
+fix_npt.cpp:  modify->add_compute(4,newarg);
+fix_npt.cpp:  if (tflag) modify->delete_compute(id_temp);
+fix_npt.cpp:  if (pflag) modify->delete_compute(id_press);
+fix_npt.cpp:  for (int i = 0; i < modify->nfix; i++)
+fix_npt.cpp:    if (strcmp(modify->fix[i]->style,"deform") == 0) {
+fix_npt.cpp:      int *dimflag = ((FixDeform *) modify->fix[i])->dimflag;
+fix_npt.cpp:  int icompute = modify->find_compute(id_temp);
+fix_npt.cpp:  temperature = modify->compute[icompute];
+fix_npt.cpp:  icompute = modify->find_compute(id_press);
+fix_npt.cpp:  pressure = modify->compute[icompute];
+fix_npt.cpp:  for (int i = 0; i < modify->nfix; i++)
+fix_npt.cpp:    if (modify->fix[i]->rigid_flag) nrigid++;
+fix_npt.cpp:    for (int i = 0; i < modify->nfix; i++)
+fix_npt.cpp:      if (modify->fix[i]->rigid_flag) rfix[nrigid++] = i;
+fix_npt.cpp:      modify->fix[rfix[i]]->deform(0);
+fix_npt.cpp:      modify->fix[rfix[i]]->deform(1);
+fix_npt.cpp:      modify->delete_compute(id_temp);
+fix_npt.cpp:    int icompute = modify->find_compute(arg[1]);
+fix_npt.cpp:    temperature = modify->compute[icompute];
+fix_npt.cpp:    icompute = modify->find_compute(id_press);
+fix_npt.cpp:    delete [] modify->compute[icompute]->id_pre;
+fix_npt.cpp:    modify->compute[icompute]->id_pre = new char[n];
+fix_npt.cpp:    strcpy(modify->compute[icompute]->id_pre,id_temp);
+fix_npt.cpp:      modify->delete_compute(id_press);
+fix_npt.cpp:    int icompute = modify->find_compute(arg[1]);
+fix_npt.cpp:    pressure = modify->compute[icompute];
+fix_nvt.cpp:  modify->add_compute(3,newarg);
+fix_nvt.cpp:  if (tflag) modify->delete_compute(id_temp);
+fix_nvt.cpp:  int icompute = modify->find_compute(id_temp);
+fix_nvt.cpp:  temperature = modify->compute[icompute];
+fix_nvt.cpp:      modify->delete_compute(id_temp);
+fix_nvt.cpp:    int icompute = modify->find_compute(id_temp);
+fix_nvt.cpp:    temperature = modify->compute[icompute];
+fix_nvt_sllod.cpp:  for (i = 0; i < modify->nfix; i++)
+fix_nvt_sllod.cpp:    if (strcmp(modify->fix[i]->style,"deform") == 0) {
+fix_nvt_sllod.cpp:      if (((FixDeform *) modify->fix[i])->remapflag != V_REMAP)
+fix_nvt_sllod.cpp:  if (i == modify->nfix)
+fix_press_berendsen.cpp:  modify->add_compute(3,newarg);
+fix_press_berendsen.cpp:  modify->add_compute(4,newarg);
+fix_press_berendsen.cpp:  if (tflag) modify->delete_compute(id_temp);
+fix_press_berendsen.cpp:  if (pflag) modify->delete_compute(id_press);
+fix_press_berendsen.cpp:  for (int i = 0; i < modify->nfix; i++)
+fix_press_berendsen.cpp:    if (strcmp(modify->fix[i]->style,"deform") == 0) {
+fix_press_berendsen.cpp:      int *dimflag = ((FixDeform *) modify->fix[i])->dimflag;
+fix_press_berendsen.cpp:  int icompute = modify->find_compute(id_temp);
+fix_press_berendsen.cpp:  temperature = modify->compute[icompute];
+fix_press_berendsen.cpp:  icompute = modify->find_compute(id_press);
+fix_press_berendsen.cpp:  pressure = modify->compute[icompute];
+fix_press_berendsen.cpp:  for (int i = 0; i < modify->nfix; i++)
+fix_press_berendsen.cpp:    if (modify->fix[i]->rigid_flag) nrigid++;
+fix_press_berendsen.cpp:    for (int i = 0; i < modify->nfix; i++)
+fix_press_berendsen.cpp:      if (modify->fix[i]->rigid_flag) rfix[nrigid++] = i;
+fix_press_berendsen.cpp:      modify->fix[rfix[i]]->deform(0);
+fix_press_berendsen.cpp:      modify->fix[rfix[i]]->deform(1);
+fix_press_berendsen.cpp:      modify->delete_compute(id_temp);
+fix_press_berendsen.cpp:    int icompute = modify->find_compute(arg[1]);
+fix_press_berendsen.cpp:    temperature = modify->compute[icompute];
+fix_press_berendsen.cpp:    icompute = modify->find_compute(id_press);
+fix_press_berendsen.cpp:    delete [] modify->compute[icompute]->id_pre;
+fix_press_berendsen.cpp:    modify->compute[icompute]->id_pre = new char[n];
+fix_press_berendsen.cpp:    strcpy(modify->compute[icompute]->id_pre,id_temp);
+fix_press_berendsen.cpp:      modify->delete_compute(id_press);
+fix_press_berendsen.cpp:    int icompute = modify->find_compute(arg[1]);
+fix_press_berendsen.cpp:    pressure = modify->compute[icompute];
+fix_print.cpp:  modify->clearstep_compute();
+fix_print.cpp:  modify->addstep_compute(update->ntimestep + nevery);
+fix_recenter.cpp:  for (int i = 0; i < modify->nfix; i++) {
+fix_recenter.cpp:    if (strcmp(id,modify->fix[i]->id) == 0) after = 1;
+fix_recenter.cpp:    else if ((modify->fmask[i] & INITIAL_INTEGRATE) && after) flag = 1;
+fix_rigid.cpp:  for (int i = 0; i < modify->nfix; i++)
+fix_rigid.cpp:    if (strcmp(modify->fix[i]->style,"rigid") == 0) count++;
+fix_rigid.cpp:  for (i = 0; i < modify->nfix; i++) {
+fix_rigid.cpp:    if (strcmp(modify->fix[i]->style,"npt") == 0) break;
+fix_rigid.cpp:    if (strcmp(modify->fix[i]->style,"nph") == 0) break;
+fix_rigid.cpp:  if (i < modify->nfix) {
+fix_rigid.cpp:    for (int j = i; j < modify->nfix; j++)
+fix_rigid.cpp:      if (strcmp(modify->fix[j]->style,"rigid") == 0)
+fix_shake.cpp:  for (i = 0; i < modify->nfix; i++)
+fix_shake.cpp:    if (strcmp(modify->fix[i]->style,"shake") == 0) count++;
+fix_shake.cpp:  for (i = 0; i < modify->nfix; i++) {
+fix_shake.cpp:    if (strcmp(modify->fix[i]->style,"npt") == 0) break;
+fix_shake.cpp:    if (strcmp(modify->fix[i]->style,"nph") == 0) break;
+fix_shake.cpp:  if (i < modify->nfix) {
+fix_shake.cpp:    for (int j = i; j < modify->nfix; j++)
+fix_shake.cpp:      if (strcmp(modify->fix[j]->style,"shake") == 0)
+fix_shake.cpp:    for (i = 0; i < modify->nfix; i++)
+fix_shake.cpp:      if (strcmp(modify->fix[i]->style,"RESPA") == 0) ifix_respa = i;
+fix_shake.cpp:  double ***f_level = ((FixRespa *) modify->fix[ifix_respa])->f_level;
+fix_solid_bound.cpp:                  modify->fix[stress_list[k]]->virial_f(i,fs);
+fix_solid_bound.cpp:                        modify->fix[stress_list[k]]->virial_f(i,fs);
+fix_solid_bound.cpp:                      modify->fix[stress_list[k]]->virial_f(i,fs);
+fix_solid_bound.cpp:                        modify->fix[stress_list[k]]->virial_f(i,fs);
+fix_solid_bound.cpp:                      modify->fix[stress_list[k]]->virial_f(i,fs);
+fix_stat_stress.cpp:  for(i = 0; i < modify->nfix; ++i)
+fix_stat_stress.cpp:    if(strcmp(id, modify->fix[i]->id) == 0)
+fix_temp_berendsen.cpp:  modify->add_compute(3,newarg);
+fix_temp_berendsen.cpp:  if (tflag) modify->delete_compute(id_temp);
+fix_temp_berendsen.cpp:  int icompute = modify->find_compute(id_temp);
+fix_temp_berendsen.cpp:  temperature = modify->compute[icompute];
+fix_temp_berendsen.cpp:      modify->delete_compute(id_temp);
+fix_temp_berendsen.cpp:    int icompute = modify->find_compute(id_temp);
+fix_temp_berendsen.cpp:    temperature = modify->compute[icompute];
+fix_temp_rescale.cpp:  modify->add_compute(3,newarg);
+fix_temp_rescale.cpp:  if (tflag) modify->delete_compute(id_temp);
+fix_temp_rescale.cpp:  int icompute = modify->find_compute(id_temp);
+fix_temp_rescale.cpp:  temperature = modify->compute[icompute];
+fix_temp_rescale.cpp:      modify->delete_compute(id_temp);
+fix_temp_rescale.cpp:    int icompute = modify->find_compute(id_temp);
+fix_temp_rescale.cpp:    temperature = modify->compute[icompute];
+fix_thermal_conductivity.cpp:  for (int i = 0; i < modify->nfix; i++) {
+fix_thermal_conductivity.cpp:    if (modify->fix[i] == this) foundme = 1;
+fix_thermal_conductivity.cpp:    if (foundme && strcmp(modify->fix[i]->style,"ave/spatial") == 0 && me == 0)
+fix_tmd.cpp:  for (int i = 0; i < modify->nfix; i++) {
+fix_tmd.cpp:    if (strcmp(modify->fix[i]->style,"tmd") == 0) flag = 1;
+fix_tmd.cpp:    if (flag && strcmp(modify->fix[i]->style,"nve") == 0) flag = 2;
+fix_tmd.cpp:    if (flag && strcmp(modify->fix[i]->style,"nvt") == 0) flag = 2;
+fix_tmd.cpp:    if (flag && strcmp(modify->fix[i]->style,"npt") == 0) flag = 2;
+fix_tmd.cpp:    if (flag && strcmp(modify->fix[i]->style,"nph") == 0) flag = 2;
+fix_viscosity.cpp:  for (int i = 0; i < modify->nfix; i++) {
+fix_viscosity.cpp:    if (modify->fix[i] == this) foundme = 1;
+fix_viscosity.cpp:    if (foundme && strcmp(modify->fix[i]->style,"ave/spatial") == 0 && me == 0)
+group.cpp:    for (i = 0; i < modify->nfix; i++)
+group.cpp:      if (modify->fix[i]->igroup == igroup)
+group.cpp:    for (i = 0; i < modify->ncompute; i++)
+group.cpp:      if (modify->compute[i]->igroup == igroup)
+input.cpp:  modify->add_compute(narg,arg);
+input.cpp:  modify->modify_compute(narg,arg);
+input.cpp:  for (int i = 0; i < modify->ncompute; i++)
+input.cpp:    modify->compute[i]->reset_extra_dof();
+input.cpp:  modify->add_fix(narg,arg);
+input.cpp:  modify->modify_fix(narg,arg);
+input.cpp:  modify->delete_compute(arg[0]);
+input.cpp:  modify->delete_fix(arg[0]);
+integrate.cpp:  for (int i = 0; i < modify->ncompute; i++) {
+integrate.cpp:    if (modify->compute[i]->peflag) nelist_global++;
+integrate.cpp:    if (modify->compute[i]->peatomflag) nelist_atom++;
+integrate.cpp:    if (modify->compute[i]->pressflag) nvlist_global++;
+integrate.cpp:    if (modify->compute[i]->pressatomflag) nvlist_atom++;
+integrate.cpp:  for (int i = 0; i < modify->ncompute; i++) {
+integrate.cpp:    if (modify->compute[i]->peflag)
+integrate.cpp:      elist_global[nelist_global++] = modify->compute[i];
+integrate.cpp:    if (modify->compute[i]->peatomflag)
+integrate.cpp:      elist_atom[nelist_atom++] = modify->compute[i];
+integrate.cpp:    if (modify->compute[i]->pressflag)
+integrate.cpp:      vlist_global[nvlist_global++] = modify->compute[i];
+integrate.cpp:    if (modify->compute[i]->pressatomflag)
+integrate.cpp:      vlist_atom[nvlist_atom++] = modify->compute[i];
+lammps.cpp:  modify->init();        // modify must come after update, force, atom, domain
+min.cpp:  modify->add_fix(3,fixarg);
+min.cpp:  fix_minimize = (FixMinimize *) modify->fix[modify->nfix-1];
+min.cpp:  modify->setup(vflag);
+min.cpp:  nextra = modify->min_dof();
+min.cpp:  int id = modify->find_compute("thermo_pe");
+min.cpp:  pe_compute = modify->compute[id];
+min.cpp:  if (nextra) ecurrent += modify->min_energy(fextra);
+min.cpp:    modify->addstep_compute_all(update->ntimestep);
+min.cpp:  modify->delete_fix("MINIMIZE");
+min.cpp:  if (modify->n_min_post_force) modify->min_post_force(vflag);
+min.cpp:  if (nextra) ecurrent += modify->min_energy(fextra);
+min.cpp:    double alpha_extra = modify->max_alpha(hextra);
+min.cpp:  if (nextra) modify->min_store();
+min.cpp:    if (nextra) modify->min_step(0.0,hextra);
+min.cpp:    if (nextra) modify->min_step(alpha,hextra);
+min.cpp:      if (nextra) modify->min_step(0.0,hextra);
+min.cpp:    double alpha_extra = modify->max_alpha(hextra);
+min.cpp:  if (nextra) modify->min_store();
+min.cpp:    if (nextra) modify->min_step(0.0,hextra);
+min.cpp:    if (nextra) modify->min_step(alpha,hextra);
+min.cpp:      if (nextra) modify->min_step(0.0,hextra);
+min.cpp:      if (nextra) modify->min_step(0.0,hextra);
+min.cpp:      if (nextra) modify->min_step(alpha0,hextra);
+min.cpp:      if (nextra) modify->min_step(0.0,hextra);
+min.cpp:      if (nextra) modify->min_step(alpha,hextra);
+min.cpp:      if (nextra) modify->min_step(0.0,hextra);
+min.cpp:  for (int i = 0; i < modify->ncompute; i++) {
+min.cpp:    if (modify->compute[i]->peatomflag) nelist_atom++;
+min.cpp:    if (modify->compute[i]->pressflag) nvlist_global++;
+min.cpp:    if (modify->compute[i]->pressatomflag) nvlist_atom++;
+min.cpp:  for (int i = 0; i < modify->ncompute; i++) {
+min.cpp:    if (modify->compute[i]->peatomflag)
+min.cpp:      elist_atom[nelist_atom++] = modify->compute[i];
+min.cpp:    if (modify->compute[i]->pressflag)
+min.cpp:      vlist_global[nvlist_global++] = modify->compute[i];
+min.cpp:    if (modify->compute[i]->pressatomflag)
+min.cpp:      vlist_atom[nvlist_atom++] = modify->compute[i];
+neighbor.cpp:  fixchecklist = new int[modify->nfix];
+neighbor.cpp:  for (i = 0; i < modify->nfix; i++)
+neighbor.cpp:    if (modify->fix[i]->force_reneighbor)
+neighbor.cpp:	for (int ifix = 0; ifix < modify->nfix; ifix++)
+neighbor.cpp:	  if (strcmp(modify->fix[ifix]->style,"SHEAR_HISTORY") == 0) 
+neighbor.cpp:	    lists[i-1]->fix_history = (FixShearHistory *) modify->fix[ifix];
+neighbor.cpp:  for (i = 0; i < modify->nfix; i++)
+neighbor.cpp:    if (strcmp(modify->fix[i]->style,"shake") == 0)
+neighbor.cpp:      if (n == modify->fix[fixchecklist[i]]->next_reneighbor) return 1;
+output.cpp:  modify->add_compute(3,newarg);
+output.cpp:  modify->add_compute(4,newarg);
+output.cpp:  modify->add_compute(3,newarg);
+output.cpp:	modify->clearstep_compute();
+output.cpp:	modify->addstep_compute(next_dump[idump]);
+output.cpp:  modify->clearstep_compute();
+output.cpp:  modify->addstep_compute(next_thermo);
+output.cpp:          modify->clearstep_compute();
+output.cpp:	  modify->addstep_compute(next_dump[idump]);
+output.cpp:    modify->clearstep_compute();
+output.cpp:    modify->addstep_compute(next_thermo);
+output.cpp:  bytes += modify->memory_usage();
+pair_dpd_adh.cpp:        modify->fix[stress_list[k]]->virial1(i);
+pair_dpd_adh.cpp:  	          modify->fix[stress_list[k]]->virial3(i,j,ff);
+pair_dpd_adh.cpp:  	    			modify->fix[stress_list[k]]->virial2(j,ff);
+pair_dpd.cpp:        modify->fix[stress_list[k]]->virial1(i);
+pair_dpd.cpp:      			modify->fix[stress_list[k]]->virial2(j,ff);
+pair_dpd_misc.cpp:        modify->fix[stress_list[k]]->virial1(i);
+pair_dpd_misc.cpp:  	    		modify->fix[stress_list[k]]->virial2(j,ff);
+read_restart.cpp:  int nextra = modify->read_restart(fp);
+respa.cpp:  if (modify->nfix == 0)
+respa.cpp:  modify->add_fix(4,fixarg);
+respa.cpp:  fix_respa = (FixRespa *) modify->fix[modify->nfix-1];
+respa.cpp:  modify->setup(vflag);
+respa.cpp:    if (modify->n_end_of_step) modify->end_of_step();
+respa.cpp:  modify->delete_fix("RESPA");
+respa.cpp:    modify->initial_integrate_respa(vflag,ilevel,0);
+respa.cpp:    if (modify->n_post_integrate_respa)
+respa.cpp:      modify->post_integrate_respa(ilevel,iloop);
+respa.cpp:      modify->initial_integrate_respa(vflag,ilevel,1);
+respa.cpp:      if (modify->n_post_integrate_respa)
+respa.cpp:	modify->post_integrate_respa(ilevel,iloop);
+respa.cpp:	if (modify->n_pre_exchange) modify->pre_exchange();
+respa.cpp:	if (modify->n_pre_neighbor) modify->pre_neighbor();
+respa.cpp:    if (modify->n_pre_force_respa)
+respa.cpp:      modify->pre_force_respa(vflag,ilevel,iloop);
+respa.cpp:    if (modify->n_post_force_respa)
+respa.cpp:      modify->post_force_respa(vflag,ilevel,iloop);
+respa.cpp:    modify->final_integrate_respa(ilevel);
+run.cpp:	modify->clearstep_compute();
+run.cpp:	modify->addstep_compute(update->ntimestep + nevery);
+temper.cpp:  for (whichfix = 0; whichfix < modify->nfix; whichfix++)
+temper.cpp:    if (strcmp(arg[3],modify->fix[whichfix]->id) == 0) break;
+temper.cpp:  if (whichfix == modify->nfix) 
+temper.cpp:  if ((strcmp(modify->fix[whichfix]->style,"nvt") != 0) &&
+temper.cpp:      (strcmp(modify->fix[whichfix]->style,"langevin") != 0) &&
+temper.cpp:      (strcmp(modify->fix[whichfix]->style,"temp/berendsen") != 0) &&
+temper.cpp:      (strcmp(modify->fix[whichfix]->style,"temp/rescale") != 0))
+temper.cpp:  int id = modify->find_compute("thermo_pe");
+temper.cpp:  Compute *pe_compute = modify->compute[id];
+temper.cpp:    modify->fix[whichfix]->reset_target(new_temp);
+temper.cpp:      modify->fix[whichfix]->reset_target(new_temp);
+thermo.cpp:    icompute = modify->find_compute(id_compute[i]);
+thermo.cpp:    computes[i] = modify->compute[icompute];
+thermo.cpp:    ifix = modify->find_fix(id_fix[i]);
+thermo.cpp:    fixes[i] = modify->fix[ifix];
+thermo.cpp:      int icompute = modify->find_compute(arg[iarg+1]);
+thermo.cpp:      temperature = modify->compute[icompute];
+thermo.cpp:	icompute = modify->find_compute(id_compute[index_press_scalar]);
+thermo.cpp:	icompute = modify->find_compute(id_compute[index_press_vector]);
+thermo.cpp:      } else icompute = modify->find_compute((char *) "thermo_press");
+thermo.cpp:      delete [] modify->compute[icompute]->id_pre;
+thermo.cpp:      modify->compute[icompute]->id_pre = new char[n];
+thermo.cpp:      strcpy(modify->compute[icompute]->id_pre,arg[iarg+1]);
+thermo.cpp:      int icompute = modify->find_compute(arg[iarg+1]);
+thermo.cpp:      pressure = modify->compute[icompute];
+thermo.cpp:	n = modify->find_compute(id);
+thermo.cpp:	if (argindex[nfield] == 0 && modify->compute[n]->scalar_flag == 0)
+thermo.cpp:	if (argindex[nfield] > 0 && modify->compute[n]->vector_flag == 0)
+thermo.cpp:	    argindex[nfield] > modify->compute[n]->size_vector)
+thermo.cpp:	n = modify->find_fix(id);
+thermo.cpp:	if (argindex[nfield] == 0 && modify->fix[n]->scalar_flag == 0)
+thermo.cpp:	if (argindex[nfield] > 0 && modify->fix[n]->vector_flag == 0)
+thermo.cpp:	    argindex[nfield] > modify->fix[n]->size_vector)
+thermo.cpp:  if (extra) modify->add_compute(4,newarg);
+thermo.cpp:  else modify->add_compute(3,newarg);
+update.cpp:  for (int i = 0; i < modify->nfix; i++)
+update.cpp:    if (modify->fix[i]->time_depend)
+update.cpp:  for (int i = 0; i < modify->ncompute; i++) {
+update.cpp:    modify->compute[i]->invoked_scalar = -1;
+update.cpp:    modify->compute[i]->invoked_vector = -1;
+update.cpp:    modify->compute[i]->invoked_peratom = -1;
+update.cpp:  for (int i = 0; i < modify->ncompute; i++)
+update.cpp:    if (modify->compute[i]->timeflag) modify->compute[i]->clearstep();
+variable.cpp:	int icompute = modify->find_compute(id);
+variable.cpp:	Compute *compute = modify->compute[icompute];
+variable.cpp:	int ifix = modify->find_fix(id);
+variable.cpp:	Fix *fix = modify->fix[ifix];
+velocity.cpp:      for (icompute = 0; icompute < modify->ncompute; icompute++)
+velocity.cpp:	if (strcmp(arg[iarg+1],modify->compute[icompute]->id) == 0) break;
+velocity.cpp:      if (icompute == modify->ncompute) 
+velocity.cpp:      temperature = modify->compute[icompute];
+verlet.cpp:  if (modify->nfix == 0)
+verlet.cpp:  modify->setup(vflag);
+verlet.cpp:  int n_post_integrate = modify->n_post_integrate;
+verlet.cpp:  int n_pre_exchange = modify->n_pre_exchange;
+verlet.cpp:  int n_pre_neighbor = modify->n_pre_neighbor;
+verlet.cpp:  int n_pre_force = modify->n_pre_force;
+verlet.cpp:  int n_post_force = modify->n_post_force;
+verlet.cpp:  int n_end_of_step = modify->n_end_of_step;
+verlet.cpp:    modify->initial_integrate(vflag);
+verlet.cpp:    if (n_post_integrate) modify->post_integrate();
+verlet.cpp:      if (n_pre_exchange) modify->pre_exchange();
+verlet.cpp:      if (n_pre_neighbor) modify->pre_neighbor();
+verlet.cpp:    if (n_pre_force) modify->pre_force(vflag);
+verlet.cpp:    if (n_post_force) modify->post_force(vflag);
+verlet.cpp:    modify->final_integrate();
+verlet.cpp:    if (n_end_of_step) modify->end_of_step();
+write_restart.cpp:  modify->write_restart(fp);
+write_restart.cpp:  if (modify->restart_pbc_any) {

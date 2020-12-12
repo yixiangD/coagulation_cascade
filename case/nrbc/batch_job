@@ -1,0 +1,11 @@
+#!/bin/bash
+#SBATCH -J nrbc_new
+#SBATCH -o MyMPIJob.%J.out
+#SBATCH -n 48
+#SBATCH -t 30:00:00
+
+srun --mpi=pmi2 ~/lmp_src_group/src_cascade/lmp_stam -in chan.equil.run
+wait&
+srun --mpi=pmi2 ~/lmp_src_group/src_cascade/lmp_stam -in chan.rheo.run
+wait&
+srun --mpi=pmi2 ~/lmp_src_group/src_cascade/lmp_stam -in chan.adr.run

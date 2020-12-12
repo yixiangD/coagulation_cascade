@@ -1,0 +1,112 @@
+# 23 solvent components diffusion using DPD
+include         seeds.txt
+variable        nthermo equal 500
+dimension       3
+boundary	p f p
+units           lj
+variable        force equal 0.5
+atom_style      cc/full
+neighbor        1.0 bin
+neigh_modify    every 1 check yes exclude type 1 4 exclude type 3 4 exclude type 4 4 exclude type 1 5 exclude type 2 5 exclude type 3 5 exclude type 4 5 exclude type 5 5
+
+read_restart	data/restart.rheo.900000
+
+group           cells union rbc platelet bank
+
+bond_style      cell
+bond_coeff      1 rbc 0.1 1.8 100.0 2.0 5.47 16.41 0.0
+bond_coeff      2 plat 0.1 1.8 10000.0 2.0 0.0 0.0 0.0
+bond_coeff      3 bond 2.222e4 128.0e-3 0.0 0.0 0.0 0.3 0 #dummy bonds defined here for future use
+bond_coeff      4 bond 2.222e4 128.0e-3 0.0 0.0 0.0 0.3 0
+bond_coeff      5 bond 2.222e4 128.0e-3 0.0 0.0 0.0 0.0 0
+bond_coeff      6 bond 2.222e4 128.0e-3 0.0 0.0 0.0 0.0 0
+
+angle_style     area/volume
+angle_coeff     1 4900.0 132.8686  5000.0 127.4571 100.0 0.
+angle_coeff     2 5000.0 31.160    5000.0 12.006   100.0 0.
+
+dihedral_style  bend
+dihedral_coeff  1 6.025 0.0 0.0
+dihedral_coeff  2 100.0 0.0 0.0
+
+pair_style      hybrid/overlay dpd 1.0 ${seed1} dpd/misc 1.0 ${seed2} cc 1.0 ${seed3} 0 105
+pair_coeff      1 1 dpd 5.0 20.0 2.0 0.2 1.58
+pair_coeff      1 2 dpd 0.0 10.0 1.414 0.2 1.5
+pair_coeff      1 3 dpd 0.0 45.0 3.0 0.2 1.5
+pair_coeff      1 4 dpd 0.0 0.0 0.0 0.25 1.0
+pair_coeff      1 5 dpd 0.0 0.0 0.0 0.25 1.0
+pair_coeff      2 2 dpd 2.5 10.0 1.414 0.2 1.0
+pair_coeff      2 3 dpd 2.5 10.0 1.414 0.2 1.0
+pair_coeff      2 4 dpd 0.0 0.0 0.0 0.25 1.0
+pair_coeff      2 5 dpd 0.0 0.0 0.0 0.25 1.0
+pair_coeff      3 3 dpd 10.0 10.0 1.414 0.2 1.0
+pair_coeff      3 4 dpd 0.0 0.0 0.0 0.25 1.0
+pair_coeff      3 5 dpd 0.0 0.0 0.0 0.25 1.0
+pair_coeff      4 4 dpd 0.0 0.0 0.0 0.25 1.0
+pair_coeff      4 5 dpd 0.0 0.0 0.0 0.25 1.0
+pair_coeff      5 5 dpd 0.0 0.0 0.0 0.25 1.0
+pair_coeff      2 2 dpd/misc 2 5.0 2.0 1.0 1.0
+pair_coeff      2 3 dpd/misc 2 5.0 2.0 1.0 1.0
+pair_coeff      3 3 dpd/misc 2 5.0 2.0 0.95 1.0
+#pair_coeff      1 1 dpd/misc 4 0.0 20.0 2.0 0.2 1.58 11
+include         coeff.in
+
+#time integrater
+fix		1  move nve
+fix		2  chemical cc/verlet x 0.0 initial_cc.dat
+#add reaction
+fix		31 solvent cc/reaction 2 33 25 65 0 react_rates.dat
+fix		32 platelet cc/reaction 3 33 25 65 0 react_rates.dat
+#add body force to drive the flow + bounce-back + no-slip
+fix     40 solvent solid/bound 0 bc_channel.dat
+fix     41 rbc solid/bound 0 bc_channel_rbc.dat
+fix     42 platelet solid/bound 0 bc_channel_plat.dat
+fix	43 solvent solid/bound 1 bc_channel_cc.dat 18
+fix     7  platelet com/gyrat 100 1 1 0 data/traj/plat 1 3 SE
+fix	8  move addforce 0 ${force} 0.0 0.0
+variable c_cut    equal 0.6
+variable b_cut    equal 0.6
+variable ks       equal 9.1e3
+variable r0       equal 0.128
+variable kf0      equal 1.18e-3
+variable sigf     equal 1.8e-3
+variable kr0      equal 5.0e-7
+variable sigr     equal 1.62e-3
+variable T        equal 0.1
+variable dens     equal 5
+
+fix     91 adh bond/create/AD 2 4 ${c_cut} 3 ${ks} ${r0} ${kf0} ${sigf} ${T} 10 ${dens} 1 ${seed4} catch
+fix     92 adh bond/break/AD ${b_cut} 3 ${ks} ${r0} ${kr0} ${sigr} ${T} ${seed5} slip
+#fix             93 platelet bond/create/AD 2 2 0.5 4 2.222e5 0.0 1.18 1.31e-3 0.1 10 1 1 1354 catch
+#fix             94 platelet bond/break/AD 0.3 4 2.222e4 0.0 5.0e-7 1.62e-3 0.1 3098 slip
+fix		101 platelet molecule
+fix		102 cells influx 0.41552 1000 3 2 5 1.0 bank 7 y -5 6.5 0 20 -10 10
+
+#statistics
+fix             11 solvent stat/velT box 100 40 10 0 1 50000 data/velT  9   #9  for Thrombin
+fix             12 solvent stat/velT box 100 40 10 0 1 50000 data/velT 10   #10 for Prothrombin
+fix             13 solvent stat/velT box 100 40 10 0 1 50000 data/velT 11   #11 for Fibrin
+fix             14 solvent stat/velT box 100 40 10 0 1 50000 data/velT 12   #12 for Fibrinogen
+fix             15 solvent stat/velT box 100 40 10 0 1 50000 data/velT 15   #15 for Anti Thrombin-III
+fix             16 solvent stat/velT box 100 40 10 0 1 50000 data/velT 21   #21 for ADP
+fix             17 platelet stat/dens box 100 40 10 0 1 50000 data/den_plat
+fix             18 move stat/all box 30 40 20 0 1 2000 30 60 0 20 -10 10
+fix             20 solvent stat/velT box 100 40 10 0 1 50000 data/velT 1    #1 for IXa
+fix             21 solvent stat/velT box 100 40 10 0 1 50000 data/velT 2    #2 for IX
+fix             22 solvent stat/velT box 100 40 10 0 1 50000 data/velT 7    #7 for Xa
+fix             23 solvent stat/velT box 100 40 10 0 1 50000 data/velT 8    #8 for X
+
+reset_timestep	0
+timestep        0.001
+
+compute         mythermo solvent temp/partial 0 1 1
+thermo_modify   temp mythermo flush yes lost warn
+thermo          ${nthermo}
+
+dump            1 rbc atom 20000 data/dump.rbc.lammpstrj
+dump            2 adh atom 1000 data/dump.plat.lammpstrj
+dump            3 rbc custom 20000 data/rbc.lammpstrj id mol x y z
+dump            4 platelet custom 1000 data/plat.lammpstrj id mol x y z
+
+restart		50000 data/restart
+run 		2000010

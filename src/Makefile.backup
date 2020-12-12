@@ -1,0 +1,46 @@
+# linux = RedHat Linux box, Intel icc, MPICH2, FFTW
+
+SHELL = /bin/sh
+
+# System-specific settings
+
+CC =		/usr/local/pgi/linux86-64/2011/mpi/mpich/bin/mpiCC
+CCFLAGS =	-O3 -DFFT_NONE -DGZIP
+DEPFLAGS =	-M
+LINK =	/usr/local/pgi/linux86-64/2011/mpi/mpich/bin/mpiCC
+LINKFLAGS =	-O3
+LIBDIR = /usr/local/pgi/linux86-64/2011/mpi/mpich
+USRLIB =	-L$(LIBDIR)/lib -lscalapack \
+  $(LIBDIR)/lib/blacs_MPI-LINUX-0.a $(LIBDIR)/lib/blacsCinit_MPI-LINUX-0.a \
+  $(LIBDIR)/lib/blacsF77init_MPI-LINUX-0.a $(LIBDIR)/lib/blacs_MPI-LINUX-0.a \
+  -L/usr/local/pgi/linux86-64/2011/acml/4.4.0/lib -lacml \
+  -L/usr/local/pgi/linux86-64/2011/mpi/mpich/lib -lfmpich -lmpich -lmpichf90 \
+  -L/usr/local/pgi/linux86-64/11.4/lib -lpgf90 -lpgf90_rpm1 -lpgf902 -lpgf90rtl -lpgftnrtl
+SYSLIB =	
+ARCHIVE = ar	
+ARFLAGS =	-rc
+SIZE =		size
+
+# Link target
+
+$(EXE):	$(OBJ)
+	$(LINK) $(LINKFLAGS) $(OBJ) $(USRLIB) $(SYSLIB) -o $(EXE)
+	$(SIZE) $(EXE)
+
+# Library target
+
+lib:	$(OBJ)
+	$(ARCHIVE) $(ARFLAGS) $(EXE) $(OBJ)
+
+# Compilation rules
+
+%.o:%.cpp
+	$(CC) $(CCFLAGS) -c $<
+
+%.d:%.cpp
+	$(CC) $(CCFLAGS) $(DEPFLAGS) $< > $@
+
+# Individual dependencies
+
+DEPENDS = $(OBJ:.o=.d)
+include $(DEPENDS)

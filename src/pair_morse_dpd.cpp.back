@@ -1,0 +1,386 @@
+/* ----------------------------------------------------------------------
+   LAMMPS - Large-scale Atomic/Molecular Massively Parallel Simulator
+   http://lammps.sandia.gov, Sandia National Laboratories
+   Steve Plimpton, sjplimp@sandia.gov
+
+   Copyright (2003) Sandia Corporation.  Under the terms of Contract
+   DE-AC04-94AL85000 with Sandia Corporation, the U.S. Government retains
+   certain rights in this software.  This software is distributed under 
+   the GNU General Public License.
+
+   See the README file in the top-level LAMMPS directory.
+------------------------------------------------------------------------- */
+#include "mpi.h"
+#include "math.h"
+#include "stdio.h"
+#include "stdlib.h"
+#include "pair_morse_dpd.h"
+#include "atom.h"
+#include "comm.h"
+#include "force.h"
+#include "neigh_list.h"
+#include "memory.h"
+#include "error.h"
+#include "update.h"
+#include "random_mars.h"
+
+using namespace LAMMPS_NS;
+
+#define MIN(a,b) ((a) < (b) ? (a) : (b))
+#define MAX(a,b) ((a) > (b) ? (a) : (b))
+
+/* ---------------------------------------------------------------------- */
+
+PairMorseDPD::PairMorseDPD(LAMMPS *lmp) : Pair(lmp) {
+
+	random = NULL;
+}
+
+/* ---------------------------------------------------------------------- */
+
+PairMorseDPD::~PairMorseDPD()
+{
+  if (allocated) {
+    memory->destroy_2d_int_array(setflag);
+    memory->destroy_2d_double_array(cutsq);
+    memory->destroy_2d_double_array(cut);
+    memory->destroy_2d_double_array(d0);
+    memory->destroy_2d_double_array(alpha);
+    memory->destroy_2d_double_array(r0);
+    memory->destroy_2d_double_array(r_att);
+    memory->destroy_2d_double_array(morse1);
+    memory->destroy_2d_double_array(offset);
+  }
+
+  if (random) delete random;
+}
+
+/* ---------------------------------------------------------------------- */
+
+void PairMorseDPD::compute(int eflag, int vflag)
+{
+  int i,j,ii,jj,inum,jnum,itype,jtype;
+  double xtmp,ytmp,ztmp,delx,dely,delz,evdwl,fpair;
+  double rsq,r,dr,dexp,factor_lj,nnn;
+  int *ilist,*jlist,*numneigh,**firstneigh;
+
+  evdwl = 0.0;
+  if (eflag || vflag) ev_setup(eflag,vflag);
+  else evflag = vflag_fdotr = 0;
+
+  double **x = atom->x;
+  double **f = atom->f;
+  int *type = atom->type;
+  int nlocal = atom->nlocal;
+  int nall = nlocal + atom->nghost;
+  double *special_lj = force->special_lj;
+  double *q = atom->q;
+  int newton_pair = force->newton_pair;
+	double shift = 28.29, intpart;
+
+	int t_step = update->ntimestep; 
+	if (t_step < 50000) return;		// Alireza: hardcoded for channel flow
+
+  inum = list->inum;
+  ilist = list->ilist;
+  numneigh = list->numneigh;
+  firstneigh = list->firstneigh;
+
+  // loop over neighbors of my atoms
+
+  for (ii = 0; ii < inum; ii++) {
+    i = ilist[ii];
+    xtmp = x[i][0];
+    ytmp = x[i][1];
+    ztmp = x[i][2];
+    itype = type[i];
+    jlist = firstneigh[i];
+    jnum = numneigh[i];
+
+    if (itype == 2){
+      if (q[i] < -1.000001)
+        q[i] += 1.0;
+      else if (q[i] > 0.9999){
+        q[i] += 1.0;
+        if (q[i] > n_deact)
+          q[i] = 0.0;
+      } 
+			if (q[i] >= -1.0 && q[i] < 0.0)
+        q[i] = 1.00001;
+    }
+
+    for (jj = 0; jj < jnum; jj++) {
+      j = jlist[jj];
+
+      if (j < nall) factor_lj = 1.0;
+      else {
+				factor_lj = special_lj[j/nall];
+				j %= nall;
+      }
+
+      delx = xtmp - x[j][0];
+      dely = ytmp - x[j][1];
+      delz = ztmp - x[j][2];
+      rsq = delx*delx + dely*dely + delz*delz;
+      jtype = type[j];
+      
+			r = sqrt(rsq);
+      if (r < cut[itype][jtype] && q[j] == 1.0)
+        if (itype == 2 && q[i] == 0.0){
+          nnn = n_act*(random->uniform() + 0.5);
+          q[i] = -1.0 - nnn;         
+				}
+      if (r < r_att[itype][jtype] && q[i] >= 1.0 && q[j] >= 1.0 && modf(q[j],&intpart) == 0.0){
+        q[i] = 1.0;
+			  dr = r - r0[itype][jtype];
+
+				if (dr < 0.0 ) continue; //Alireza: only attractive force is considered
+
+				dexp = exp(-alpha[itype][jtype] * dr);
+  			fpair = factor_lj * (morse1[itype][jtype] * (dexp*dexp - dexp) + shift) / r;
+
+  			f[i][0] += delx*fpair;
+  			f[i][1] += dely*fpair;
+  			f[i][2] += delz*fpair;
+  			if (newton_pair || j < nlocal) {
+    			f[j][0] -= delx*fpair;
+    			f[j][1] -= dely*fpair;
+    			f[j][2] -= delz*fpair;
+  			}
+
+  			if (eflag) {
+    			evdwl = d0[itype][jtype] * (dexp*dexp - 2.0*dexp) - offset[itype][jtype];
+    			evdwl *= factor_lj;
+  			}
+
+  			if (evflag) ev_tally(i,j,nlocal,newton_pair,evdwl,0.0,fpair,delx,dely,delz);
+			}
+    }
+  }
+
+  if (vflag_fdotr) virial_compute();
+}
+
+/* ----------------------------------------------------------------------
+   allocate all arrays 
+------------------------------------------------------------------------- */
+
+void PairMorseDPD::allocate()
+{
+  allocated = 1;
+  int n = atom->ntypes;
+
+  setflag = memory->create_2d_int_array(n+1,n+1,"pair:setflag");
+  for (int i = 1; i <= n; i++)
+    for (int j = i; j <= n; j++)
+      setflag[i][j] = 0;
+
+  cutsq = memory->create_2d_double_array(n+1,n+1,"pair:cutsq");
+  cut = memory->create_2d_double_array(n+1,n+1,"pair:cut");
+  d0 = memory->create_2d_double_array(n+1,n+1,"pair:d0");
+  alpha = memory->create_2d_double_array(n+1,n+1,"pair:alpha");
+  r0 = memory->create_2d_double_array(n+1,n+1,"pair:r0");
+  r_att = memory->create_2d_double_array(n+1,n+1,"pair:r_att");
+  morse1 = memory->create_2d_double_array(n+1,n+1,"pair:morse1");
+  offset = memory->create_2d_double_array(n+1,n+1,"pair:offset");
+}
+
+/* ----------------------------------------------------------------------
+   global settings 
+------------------------------------------------------------------------- */
+
+void PairMorseDPD::settings(int narg, char **arg)
+{
+	short unsigned seed_h;
+	double dt = update->dt;
+
+  if (narg != 2) error->all("Illegal pair_style command");
+
+  n_act = atof(arg[0]);
+  seed = atoi(arg[1]);
+
+	n_act = n_act/dt;
+  n_deact = 8.0*n_act;
+
+  // initialize Marsaglia RNG with processor-unique seed
+
+  if (seed <= 0) error->all("Illegal fix pair_style command");
+  if (random) delete random;
+  random = new RanMars(lmp,seed + comm->me);
+  seed_h = (comm->me+3)*seed;
+  seed48(&seed_h);
+}
+
+/* ----------------------------------------------------------------------
+   set coeffs for one or more type pairs
+------------------------------------------------------------------------- */
+
+void PairMorseDPD::coeff(int narg, char **arg)
+{
+  if (narg != 7) error->all("Incorrect args for pair coefficients");
+  if (!allocated) allocate();
+
+  int ilo,ihi,jlo,jhi;
+  force->bounds(arg[0],atom->ntypes,ilo,ihi);
+  force->bounds(arg[1],atom->ntypes,jlo,jhi);
+
+  double d0_one = atof(arg[2]);
+  double alpha_one = atof(arg[3]);
+  double r0_one = atof(arg[4]);
+  double cut_one = atof(arg[5]);
+  double r_att_one = atof(arg[6]);
+
+  int count = 0;
+  for (int i = ilo; i <= ihi; i++) {
+    for (int j = MAX(jlo,i); j <= jhi; j++) {
+      d0[i][j] = d0_one;
+      alpha[i][j] = alpha_one;
+      r0[i][j] = r0_one;
+      cut[i][j] = cut_one;
+      r_att[i][j] = r_att_one;
+      setflag[i][j] = 1;
+      count++;
+    }
+  }
+
+  if (count == 0) error->all("Incorrect args for pair coefficients");
+}
+
+
+/* ----------------------------------------------------------------------
+   init for one type pair i,j and corresponding j,i
+------------------------------------------------------------------------- */
+
+double PairMorseDPD::init_one(int i, int j)
+{
+  if (setflag[i][j] == 0) error->all("All pair coeffs are not set");
+
+  morse1[i][j] = 2.0*d0[i][j]*alpha[i][j];
+     
+  if (offset_flag) {
+    double alpha_dr = -alpha[i][j] * (cut[i][j] - r0[i][j]);
+    offset[i][j] = d0[i][j] * (exp(2.0*alpha_dr) - 2.0*exp(alpha_dr));
+  } else offset[i][j] = 0.0;
+
+  cut[j][i] = cut[i][j];
+  d0[j][i] = d0[i][j];
+  alpha[j][i] = alpha[i][j];
+  r0[j][i] = r0[i][j];
+	r_att[j][i] = r_att[i][j];
+  morse1[j][i] = morse1[i][j];
+  offset[j][i] = offset[i][j];
+
+  return cut[i][j];
+}
+
+/* ----------------------------------------------------------------------
+   proc 0 writes to restart file
+------------------------------------------------------------------------- */
+
+void PairMorseDPD::write_restart(FILE *fp)
+{
+  write_restart_settings(fp);
+
+  int i,j;
+  for (i = 1; i <= atom->ntypes; i++)
+    for (j = i; j <= atom->ntypes; j++) {
+      fwrite(&setflag[i][j],sizeof(int),1,fp);
+      if (setflag[i][j]) {
+	fwrite(&d0[i][j],sizeof(double),1,fp);
+	fwrite(&alpha[i][j],sizeof(double),1,fp);
+	fwrite(&r0[i][j],sizeof(double),1,fp);
+	fwrite(&cut[i][j],sizeof(double),1,fp);
+	fwrite(&r_att[i][j],sizeof(double),1,fp);
+      }
+    }
+}
+
+/* ----------------------------------------------------------------------
+   proc 0 reads from restart file, bcasts
+------------------------------------------------------------------------- */
+
+void PairMorseDPD::read_restart(FILE *fp)
+{
+  read_restart_settings(fp);
+
+  allocate();
+
+  int i,j;
+  int me = comm->me;
+  for (i = 1; i <= atom->ntypes; i++)
+    for (j = i; j <= atom->ntypes; j++) {
+      if (me == 0) fread(&setflag[i][j],sizeof(int),1,fp);
+      MPI_Bcast(&setflag[i][j],1,MPI_INT,0,world);
+      if (setflag[i][j]) {
+	if (me == 0) {
+	  fread(&d0[i][j],sizeof(double),1,fp);
+	  fread(&alpha[i][j],sizeof(double),1,fp);
+	  fread(&r0[i][j],sizeof(double),1,fp);
+	  fread(&cut[i][j],sizeof(double),1,fp);
+	  fread(&r_att[i][j],sizeof(double),1,fp);
+	}
+	MPI_Bcast(&d0[i][j],1,MPI_DOUBLE,0,world);
+	MPI_Bcast(&alpha[i][j],1,MPI_DOUBLE,0,world);
+	MPI_Bcast(&r0[i][j],1,MPI_DOUBLE,0,world);
+	MPI_Bcast(&cut[i][j],1,MPI_DOUBLE,0,world);
+	MPI_Bcast(&r_att[i][j],1,MPI_DOUBLE,0,world);
+      }
+    }
+}
+
+/* ----------------------------------------------------------------------
+   proc 0 writes to restart file
+------------------------------------------------------------------------- */
+
+void PairMorseDPD::write_restart_settings(FILE *fp)
+{
+  fwrite(&n_act,sizeof(double),1,fp);
+	fwrite(&seed,sizeof(int),1,fp);
+  fwrite(&offset_flag,sizeof(int),1,fp);
+  fwrite(&mix_flag,sizeof(int),1,fp);
+}
+
+/* ----------------------------------------------------------------------
+   proc 0 reads from restart file, bcasts
+------------------------------------------------------------------------- */
+
+void PairMorseDPD::read_restart_settings(FILE *fp)
+{
+  short unsigned seed_h;
+
+  if (comm->me == 0) {
+    fread(&n_act,sizeof(double),1,fp);
+		fread(&seed,sizeof(int),1,fp);
+    fread(&offset_flag,sizeof(int),1,fp);
+    fread(&mix_flag,sizeof(int),1,fp);
+  }
+  MPI_Bcast(&n_act,1,MPI_DOUBLE,0,world);
+  MPI_Bcast(&seed,1,MPI_INT,0,world);
+  MPI_Bcast(&offset_flag,1,MPI_INT,0,world);
+  MPI_Bcast(&mix_flag,1,MPI_INT,0,world);
+
+  // initialize Marsaglia RNG with processor-unique seed
+  // same seed that pair_style command initially specified
+
+  if (random) delete random;
+  random = new RanMars(lmp,seed + comm->me);
+  seed_h = (comm->me+3)*seed;
+  seed48(&seed_h);
+}
+
+/* ---------------------------------------------------------------------- */
+
+double PairMorseDPD::single(int i, int j, int itype, int jtype, double rsq,
+			 double factor_coul, double factor_lj,
+			 double &fforce)
+{
+  double r,dr,dexp,phi;
+
+  r = sqrt(rsq);
+  dr = r - r0[itype][jtype];
+  dexp = exp(-alpha[itype][jtype] * dr);
+  fforce = factor_lj * morse1[itype][jtype] * (dexp*dexp - dexp) / r;
+  
+  phi = d0[itype][jtype] * (dexp*dexp - 2.0*dexp) - offset[itype][jtype];
+  return factor_lj*phi;
+}

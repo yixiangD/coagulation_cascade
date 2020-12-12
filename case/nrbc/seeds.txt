@@ -1,0 +1,5 @@
+variable seed1 equal 87024
+variable seed2 equal 4992
+variable seed3 equal 78783
+variable seed4 equal 73694
+variable seed5 equal 7792

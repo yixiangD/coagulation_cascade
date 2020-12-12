@@ -1,0 +1,39 @@
+dimension       3
+units           lj
+atom_style      cc/full
+boundary        p f p
+
+neighbor        1.0 bin
+neigh_modify    every 1 check yes
+
+read_data       nrbc_platelet.data
+  7 = max bonds/atom
+  6 = max angles/atom
+  6 = max dihedrals/atom
+  orthogonal box = (-5 0 -10) to (105 20 10)
+  12 by 2 by 2 processor grid
+  264470 atoms
+  254124 bonds
+  169416 angles
+  254124 dihedrals
+  7 = max # of 1-2 neighbors
+  35 = max # of 1-3 neighbors
+  210 = max # of 1-4 neighbors
+  420 = max # of special neighbors
+
+group           solvent	 type 1
+176000 atoms in group solvent
+group           platelet type 2
+3072 atoms in group platelet
+group           rbc      type 3
+59000 atoms in group rbc
+group           SE       type 4
+2398 atoms in group SE
+group           bank     type 5
+24000 atoms in group bank
+
+bond_style      cell
+bond_coeff      1 rbc 0.1 1.8 100.0 2.0 5.47 16.41 0.0
+bond_coeff      2 plat 0.1 1.8 10000.0 2.0 0.0 0.0 0.0
+bond_coeff      3 bond 2.222e5 128.0e-3 0.0 0.0 0.0 0.0 0	#dummy bonds defined here for future use
+ERROR: Incorrect args in bond_coeff command

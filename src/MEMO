@@ -1,0 +1,50 @@
+New files{ 
+bond_break_ligand
+pair_dpd_misc
+pair_dpd_adh
+pair_morse_dpd
+fix_bond_AD
+fix_bond_AD_create
+fix_bond_AD_break
+fix_com_gyration
+fix_lees_edwards
+fix_solid_bound
+fix_stat_com_dens
+fix_stat_snap
+fix_stat_all
+fix_stat_velT
+fix_stat_velT_cyl
+}
+
+Modified{
+style.h
+atom_vec_bond.h
+atom_vec_full.h
+atom_vec_molecular.h
+atom_vec_angle.h
+atom_vec_charge.h
+fix_add_force.cpp
+fix_add_force.h
+atom.cpp
+atom.h
+force.cpp
+force.h
+fix.h
+fix_stat files
+}
+
+Chemical Concentration Files{
+atom_vec_cc_atomic (handles platelets as colloids)
+atom_vec_cc_full
+pair_cc
+fix_cc_verlet
+fix_cc_source
+fix_cc_reaction
+fix_cc_reflect
+fix_cc_resetc
+fix_cc_bcflux
+fix_cc_bcverlet
+fix_dp_force
+dump_cc
+style_cc.h
+}

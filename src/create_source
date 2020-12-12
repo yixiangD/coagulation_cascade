@@ -1,0 +1,11 @@
+#!/bin/sh
+
+echo "rm src.tar"
+rm -f src.tar
+
+echo "tar source files"
+tar -cvf src.tar *
+chmod 770 src.tar
+chgrp lammps src.tar
+
+

@@ -1,0 +1,281 @@
+angle_area_volume.cpp:    for (n = 0; n < neighbor->nanglelist; n++) {
+angle_area_volume.cpp:      i1 = neighbor->anglelist[n][0];
+angle_area_volume.cpp:      ttyp1[m] = neighbor->anglelist[n][3]; 
+angle_area_volume.cpp:  double *anglelist_area = neighbor->anglelist_area;
+angle_area_volume.cpp:  int **anglelist = neighbor->anglelist;
+angle_area_volume.cpp:  int nanglelist = neighbor->nanglelist;
+angle_charmm.cpp:  int **anglelist = neighbor->anglelist;
+angle_charmm.cpp:  int nanglelist = neighbor->nanglelist;
+angle_cosine.cpp:  int **anglelist = neighbor->anglelist;
+angle_cosine.cpp:  int nanglelist = neighbor->nanglelist;
+angle_cosine_delta.cpp:  int **anglelist = neighbor->anglelist;
+angle_cosine_delta.cpp:  int nanglelist = neighbor->nanglelist;
+angle_cosine_squared.cpp:  int **anglelist = neighbor->anglelist;
+angle_cosine_squared.cpp:  int nanglelist = neighbor->nanglelist;
+angle_harmonic.cpp:  int **anglelist = neighbor->anglelist;
+angle_harmonic.cpp:  int nanglelist = neighbor->nanglelist;
+angle_hybrid.cpp:  int nanglelist_orig = neighbor->nanglelist;
+angle_hybrid.cpp:  int **anglelist_orig = neighbor->anglelist;
+angle_hybrid.cpp:  if (neighbor->ago == 0) {
+angle_hybrid.cpp:  // set neighbor->anglelist to sub-style anglelist before call
+angle_hybrid.cpp:    neighbor->nanglelist = nanglelist[m];
+angle_hybrid.cpp:    neighbor->anglelist = anglelist[m];
+angle_hybrid.cpp:  neighbor->nanglelist = nanglelist_orig;
+angle_hybrid.cpp:  neighbor->anglelist = anglelist_orig;
+bond_cellular.cpp:			neighbor->build();
+bond_cellular.cpp:  int **bondlist = neighbor->bondlist;
+bond_cellular.cpp:  int nbondlist = neighbor->nbondlist;
+bond_cellular.cpp:  double *bondlist_length = neighbor->bondlist_length;
+bond_cellular.cpp:     	if (cc != 0)	neighbor->forced_reneigh = 1;
+bond_cellular.cpp:  MPI_Allreduce(&neighbor->forced_reneigh,&l,1,MPI_INT,MPI_MAX,world);
+bond_cellular.cpp:  neighbor->forced_reneigh = l;
+bond_fene.cpp:  int **bondlist = neighbor->bondlist;
+bond_fene.cpp:  int nbondlist = neighbor->nbondlist;
+bond_fene_expand.cpp:  int **bondlist = neighbor->bondlist;
+bond_fene_expand.cpp:  int nbondlist = neighbor->nbondlist;
+bond_harmonic.cpp:  int **bondlist = neighbor->bondlist;
+bond_harmonic.cpp:  int nbondlist = neighbor->nbondlist;
+bond_hybrid.cpp:  int nbondlist_orig = neighbor->nbondlist;
+bond_hybrid.cpp:  int **bondlist_orig = neighbor->bondlist;
+bond_hybrid.cpp:  if (neighbor->ago == 0) {
+bond_hybrid.cpp:  // set neighbor->bondlist to sub-style bondlist before call
+bond_hybrid.cpp:    neighbor->nbondlist = nbondlist[m];
+bond_hybrid.cpp:    neighbor->bondlist = bondlist[m];
+bond_hybrid.cpp:  neighbor->nbondlist = nbondlist_orig;
+bond_hybrid.cpp:  neighbor->bondlist = bondlist_orig;
+bond_morse.cpp:  int **bondlist = neighbor->bondlist;
+bond_morse.cpp:  int nbondlist = neighbor->nbondlist;
+bond_nonlinear.cpp:  int **bondlist = neighbor->bondlist;
+bond_nonlinear.cpp:  int nbondlist = neighbor->nbondlist;
+bond_quartic.cpp:  int **bondlist = neighbor->bondlist;
+bond_quartic.cpp:  int nbondlist = neighbor->nbondlist;
+bond_wlc_pow_all_visc.cpp:  int **bondlist = neighbor->bondlist;
+bond_wlc_pow_all_visc.cpp:  int nbondlist = neighbor->nbondlist;
+bond_wlc_pow_all_visc.cpp:  double *bondlist_length = neighbor->bondlist_length;
+bond_wlc_pow.cpp:  int **bondlist = neighbor->bondlist;
+bond_wlc_pow.cpp:  int nbondlist = neighbor->nbondlist;
+bond_wlc_pow.cpp:  double *bondlist_length = neighbor->bondlist_length;
+comm.cpp:  double cut = MAX(neighbor->cutneighmax,cutghostuser);
+comm.cpp:      double *cuttype = neighbor->cuttype;
+comm.cpp:      double *cuttype = neighbor->cuttype;
+compute_centro_atom.cpp:  int irequest = neighbor->request((void *) this);
+compute_centro_atom.cpp:  neighbor->requests[irequest]->pair = 0;
+compute_centro_atom.cpp:  neighbor->requests[irequest]->compute = 1;
+compute_centro_atom.cpp:  neighbor->requests[irequest]->half = 0;
+compute_centro_atom.cpp:  neighbor->requests[irequest]->full = 1;
+compute_centro_atom.cpp:  neighbor->requests[irequest]->occasional = 1;
+compute_centro_atom.cpp:  neighbor->build_one(list->index);
+compute_cna_atom.cpp:  // cannot use neighbor->cutneighmax b/c neighbor has not yet been init
+compute_cna_atom.cpp:  if (2.0*sqrt(cutsq) > force->pair->cutforce + neighbor->skin && 
+compute_cna_atom.cpp:  int irequest = neighbor->request((void *) this);
+compute_cna_atom.cpp:  neighbor->requests[irequest]->pair = 0;
+compute_cna_atom.cpp:  neighbor->requests[irequest]->compute = 1;
+compute_cna_atom.cpp:  neighbor->requests[irequest]->half = 0;
+compute_cna_atom.cpp:  neighbor->requests[irequest]->full = 1;
+compute_cna_atom.cpp:  neighbor->requests[irequest]->occasional = 1;
+compute_cna_atom.cpp:  neighbor->build_one(list->index);
+compute_coord_atom.cpp:  int irequest = neighbor->request((void *) this);
+compute_coord_atom.cpp:  neighbor->requests[irequest]->pair = 0;
+compute_coord_atom.cpp:  neighbor->requests[irequest]->compute = 1;
+compute_coord_atom.cpp:  neighbor->requests[irequest]->half = 0;
+compute_coord_atom.cpp:  neighbor->requests[irequest]->full = 1;
+compute_coord_atom.cpp:  neighbor->requests[irequest]->occasional = 1;
+compute_coord_atom.cpp:  neighbor->build_one(list->index);
+compute_group_group.cpp:  int irequest = neighbor->request((void *) this);
+compute_group_group.cpp:  neighbor->requests[irequest]->pair = 0;
+compute_group_group.cpp:  neighbor->requests[irequest]->compute = 1;
+compute_group_group.cpp:  neighbor->requests[irequest]->occasional = 1;
+compute_group_group.cpp:  neighbor->build_one(list->index);
+delete_atoms.cpp:  int irequest = neighbor->request((void *) this);
+delete_atoms.cpp:  neighbor->requests[irequest]->pair = 0;
+delete_atoms.cpp:  neighbor->requests[irequest]->command = 1;
+delete_atoms.cpp:  neighbor->requests[irequest]->half = 0;
+delete_atoms.cpp:  neighbor->requests[irequest]->full = 1;
+delete_atoms.cpp:  neighbor->requests[irequest]->occasional = 1;
+delete_atoms.cpp:  // init entire system since comm->borders and neighbor->build is done
+delete_atoms.cpp:  if (cut > neighbor->cutneighmax) 
+delete_atoms.cpp:  if (neighbor->style) neighbor->setup_bins();
+delete_atoms.cpp:  NeighList *list = neighbor->lists[irequest];
+delete_atoms.cpp:  neighbor->build_one(irequest);
+dihedral_bend.cpp:  int **dihedrallist = neighbor->dihedrallist;
+dihedral_bend.cpp:  int ndihedrallist = neighbor->ndihedrallist;
+dihedral_charmm.cpp:  int **dihedrallist = neighbor->dihedrallist;
+dihedral_charmm.cpp:  int ndihedrallist = neighbor->ndihedrallist;
+dihedral_harmonic.cpp:  int **dihedrallist = neighbor->dihedrallist;
+dihedral_harmonic.cpp:  int ndihedrallist = neighbor->ndihedrallist;
+dihedral_helix.cpp:  int **dihedrallist = neighbor->dihedrallist;
+dihedral_helix.cpp:  int ndihedrallist = neighbor->ndihedrallist;
+dihedral_hybrid.cpp:  int ndihedrallist_orig = neighbor->ndihedrallist;
+dihedral_hybrid.cpp:  int **dihedrallist_orig = neighbor->dihedrallist;
+dihedral_hybrid.cpp:  if (neighbor->ago == 0) {
+dihedral_hybrid.cpp:  // set neighbor->dihedrallist to sub-style dihedrallist before call
+dihedral_hybrid.cpp:    neighbor->ndihedrallist = ndihedrallist[m];
+dihedral_hybrid.cpp:    neighbor->dihedrallist = dihedrallist[m];
+dihedral_hybrid.cpp:  neighbor->ndihedrallist = ndihedrallist_orig;
+dihedral_hybrid.cpp:  neighbor->dihedrallist = dihedrallist_orig;
+dihedral_multi_harmonic.cpp:  int **dihedrallist = neighbor->dihedrallist;
+dihedral_multi_harmonic.cpp:  int ndihedrallist = neighbor->ndihedrallist;
+dihedral_opls.cpp:  int **dihedrallist = neighbor->dihedrallist;
+dihedral_opls.cpp:  int ndihedrallist = neighbor->ndihedrallist;
+finish.cpp:  for (m = 0; m < neighbor->old_nrequest; m++)
+finish.cpp:    if ((neighbor->old_requests[m]->half || neighbor->old_requests[m]->gran ||
+finish.cpp:	 neighbor->old_requests[m]->respaouter ||
+finish.cpp:	 neighbor->old_requests[m]->half_from_full) &&
+finish.cpp:	neighbor->old_requests[m]->skip == 0) break;
+finish.cpp:  if (m < neighbor->old_nrequest) {
+finish.cpp:    int inum = neighbor->lists[m]->inum;
+finish.cpp:    int *ilist = neighbor->lists[m]->ilist;
+finish.cpp:    int *numneigh = neighbor->lists[m]->numneigh;
+finish.cpp:  for (m = 0; m < neighbor->old_nrequest; m++)
+finish.cpp:    if (neighbor->old_requests[m]->full &&
+finish.cpp:	neighbor->old_requests[m]->skip == 0) break;
+finish.cpp:  if (m < neighbor->old_nrequest) {
+finish.cpp:      nneigh += neighbor->lists[m]->numneigh[i];
+finish.cpp:      fprintf(screen,"Neighbor list builds = %d\n",neighbor->ncalls);
+finish.cpp:      fprintf(screen,"Dangerous builds = %d\n",neighbor->ndanger);
+finish.cpp:      fprintf(logfile,"Neighbor list builds = %d\n",neighbor->ncalls);
+finish.cpp:      fprintf(logfile,"Dangerous builds = %d\n",neighbor->ndanger);
+fix_bond_AD_break.cpp:  int **bondlist = neighbor->bondlist;
+fix_bond_AD_break.cpp:  int nbondlist = neighbor->nbondlist;
+fix_bond_AD.cpp:  int irequest = neighbor->request((void *) this);
+fix_bond_AD.cpp:  neighbor->requests[irequest]->pair = 0;
+fix_bond_AD.cpp:  neighbor->requests[irequest]->fix = 1;
+fix_bond_AD.cpp:	neighbor->build();
+fix_bond_AD_create.cpp:  int irequest = neighbor->request((void *) this);
+fix_bond_AD_create.cpp:  neighbor->requests[irequest]->pair = 0;
+fix_bond_AD_create.cpp:  neighbor->requests[irequest]->fix = 1;
+fix_bond_AD_create.cpp:	neighbor->build();
+fix_bond_break.cpp:  int **bondlist = neighbor->bondlist;
+fix_bond_break.cpp:  int nbondlist = neighbor->nbondlist;
+fix_bond_create.cpp:  int irequest = neighbor->request((void *) this);
+fix_bond_create.cpp:  neighbor->requests[irequest]->pair = 0;
+fix_bond_create.cpp:  neighbor->requests[irequest]->fix = 1;
+fix_bond_swap.cpp:  int irequest = neighbor->request((void *) this);
+fix_bond_swap.cpp:  neighbor->requests[irequest]->pair = 0;
+fix_bond_swap.cpp:  neighbor->requests[irequest]->fix = 1;
+fix_orient_fcc.cpp:  int irequest = neighbor->request((void *) this);
+fix_orient_fcc.cpp:  neighbor->requests[irequest]->pair = 0;
+fix_orient_fcc.cpp:  neighbor->requests[irequest]->fix = 1;
+fix_orient_fcc.cpp:  neighbor->requests[irequest]->half = 0;
+fix_orient_fcc.cpp:  neighbor->requests[irequest]->full = 1;
+fix_rbc_bound.cpp:  int **anglelist = neighbor->anglelist;
+fix_rbc_bound.cpp:  int nanglelist = neighbor->nanglelist;
+fix_rbc_bound.cpp:      slablo[iswap] -= neighbor->skin;
+fix_rbc_bound.cpp:      slabhi[iswap] += neighbor->skin;
+fix_rbc_bound.cpp:  if (neighbor->ago == 0) { 
+fix_rdf.cpp:  int irequest = neighbor->request((void *) this);
+fix_rdf.cpp:  neighbor->requests[irequest]->pair = 0;
+fix_rdf.cpp:  neighbor->requests[irequest]->fix = 1;
+fix_rdf.cpp:  neighbor->requests[irequest]->occasional = 1;
+fix_rdf.cpp:  neighbor->build_one(list->index);
+fix_solid_bound.cpp:  if (neighbor->ago == 0)
+fix_solid_bound.cpp:  int **anglelist = neighbor->anglelist;
+fix_solid_bound.cpp:  int nanglelist = neighbor->nanglelist;
+improper_cvff.cpp:  int **improperlist = neighbor->improperlist;
+improper_cvff.cpp:  int nimproperlist = neighbor->nimproperlist;
+improper_harmonic.cpp:  int **improperlist = neighbor->improperlist;
+improper_harmonic.cpp:  int nimproperlist = neighbor->nimproperlist;
+improper_hybrid.cpp:  int nimproperlist_orig = neighbor->nimproperlist;
+improper_hybrid.cpp:  int **improperlist_orig = neighbor->improperlist;
+improper_hybrid.cpp:  if (neighbor->ago == 0) {
+improper_hybrid.cpp:  // set neighbor->improperlist to sub-style improperlist before call
+improper_hybrid.cpp:    neighbor->nimproperlist = nimproperlist[m];
+improper_hybrid.cpp:    neighbor->improperlist = improperlist[m];
+improper_hybrid.cpp:  neighbor->nimproperlist = nimproperlist_orig;
+improper_hybrid.cpp:  neighbor->improperlist = improperlist_orig;
+input.cpp:  neighbor->modify_params(narg,arg);
+input.cpp:  neighbor->set(narg,arg);
+lammps.cpp:  neighbor->init();      // neighbor must come after force, modify
+min.cpp:  neigh_every = neighbor->every;
+min.cpp:  neigh_delay = neighbor->delay;
+min.cpp:  neigh_dist_check = neighbor->dist_check;
+min.cpp:  neighbor->every = 1;
+min.cpp:  neighbor->delay = 0;
+min.cpp:  neighbor->dist_check = 1;
+min.cpp:  if (neighbor->style) neighbor->setup_bins();
+min.cpp:  neighbor->build();
+min.cpp:  neighbor->ncalls = 0;
+min.cpp:  neighbor->every = neigh_every;
+min.cpp:  neighbor->delay = neigh_delay;
+min.cpp:  neighbor->dist_check = neigh_dist_check;
+min.cpp:  int nflag = neighbor->decide();
+min.cpp:      if (neighbor->style) neighbor->setup_bins();
+min.cpp:    neighbor->build();
+neigh_list.cpp:  NeighRequest *rq = neighbor->requests[index];
+output.cpp:  bytes += neighbor->memory_usage();
+pair_buck_coul_cut.cpp:  int irequest = neighbor->request(this);
+pair_cc.cpp:	int irequest = neighbor->request(this);
+pair_coul_cut.cpp:  int irequest = neighbor->request(this);
+pair.cpp:  int irequest = neighbor->request(this);
+pair.cpp:  if (neighbor->includegroup == 0) {
+pair_dpd_adh.cpp:                neighbor->forced_reneigh = 1;
+pair_dpd_adh.cpp:                neighbor->forced_reneigh = 1;
+pair_dpd_adh.cpp:  MPI_Allreduce(&neighbor->forced_reneigh,&l,1,MPI_INT,MPI_MAX,world);
+pair_dpd_adh.cpp:  neighbor->forced_reneigh = l;
+pair_dpd_adh.cpp:  int irequest = neighbor->request(this);
+pair_dpd.cpp:  int irequest = neighbor->request(this);
+pair_dpd_misc.cpp:  int irequest = neighbor->request(this);
+pair_hybrid.cpp:  for (i = 0; i < neighbor->nrequest; i++) {
+pair_hybrid.cpp:    if (!neighbor->requests[i]->pair) continue;
+pair_hybrid.cpp:      if (styles[istyle] == neighbor->requests[i]->requestor) break;
+pair_hybrid.cpp:      neighbor->requests[i]->skip = 1;
+pair_hybrid.cpp:      neighbor->requests[i]->iskip = iskip;
+pair_hybrid.cpp:      neighbor->requests[i]->ijskip = ijskip;
+pair_hybrid.cpp:  for (i = 0; i < neighbor->nrequest; i++) {
+pair_hybrid.cpp:    if (!neighbor->requests[i]->pair) continue;
+pair_hybrid.cpp:    irq = neighbor->requests[i];
+pair_hybrid.cpp:    for (j = 0; j < neighbor->nrequest; j++) {
+pair_hybrid.cpp:      if (!neighbor->requests[j]->pair) continue;
+pair_hybrid.cpp:      jrq = neighbor->requests[j];
+pair_hybrid.cpp:    if (j < neighbor->nrequest) irq->otherlist = j;
+pair_hybrid.cpp:      int newrequest = neighbor->request(this);
+pair_hybrid.cpp:      neighbor->requests[newrequest]->copy_request(irq);
+pair_hybrid_overlay.cpp:  for (i = 0; i < neighbor->nrequest; i++) {
+pair_hybrid_overlay.cpp:    if (!neighbor->requests[i]->pair) continue;
+pair_hybrid_overlay.cpp:    irq = neighbor->requests[i];
+pair_hybrid_overlay.cpp:      if (!neighbor->requests[j]->pair) continue;
+pair_hybrid_overlay.cpp:      jrq = neighbor->requests[j];
+pair_lj_charmm_coul_charmm.cpp:  int irequest = neighbor->request(this);
+pair_lj_cut_coul_cut.cpp:  int irequest = neighbor->request(this);
+pair_lj_cut.cpp:    if (respa == 0) irequest = neighbor->request(this);
+pair_lj_cut.cpp:      irequest = neighbor->request(this);
+pair_lj_cut.cpp:      neighbor->requests[irequest]->id = 1;
+pair_lj_cut.cpp:      neighbor->requests[irequest]->half = 0;
+pair_lj_cut.cpp:      neighbor->requests[irequest]->respainner = 1;
+pair_lj_cut.cpp:      irequest = neighbor->request(this);
+pair_lj_cut.cpp:      neighbor->requests[irequest]->id = 3;
+pair_lj_cut.cpp:      neighbor->requests[irequest]->half = 0;
+pair_lj_cut.cpp:      neighbor->requests[irequest]->respaouter = 1;
+pair_lj_cut.cpp:      irequest = neighbor->request(this);
+pair_lj_cut.cpp:      neighbor->requests[irequest]->id = 1;
+pair_lj_cut.cpp:      neighbor->requests[irequest]->half = 0;
+pair_lj_cut.cpp:      neighbor->requests[irequest]->respainner = 1;
+pair_lj_cut.cpp:      irequest = neighbor->request(this);
+pair_lj_cut.cpp:      neighbor->requests[irequest]->id = 2;
+pair_lj_cut.cpp:      neighbor->requests[irequest]->half = 0;
+pair_lj_cut.cpp:      neighbor->requests[irequest]->respamiddle = 1;
+pair_lj_cut.cpp:      irequest = neighbor->request(this);
+pair_lj_cut.cpp:      neighbor->requests[irequest]->id = 3;
+pair_lj_cut.cpp:      neighbor->requests[irequest]->half = 0;
+pair_lj_cut.cpp:      neighbor->requests[irequest]->respaouter = 1;
+pair_lj_cut.cpp:  } else irequest = neighbor->request(this);
+pair_lj_gromacs_coul_gromacs.cpp:  int irequest = neighbor->request(this);
+read_restart.cpp:      // so that timestep,neighbor-skin are not changed
+respa.cpp:  if (neighbor->style) neighbor->setup_bins();
+respa.cpp:  neighbor->build();
+respa.cpp:  neighbor->ncalls = 0;
+respa.cpp:      int nflag = neighbor->decide();
+respa.cpp:	  if (neighbor->style) neighbor->setup_bins();
+respa.cpp:	neighbor->build();
+update.cpp:    neighbor->skin = 0.3;
+update.cpp:    neighbor->skin = 2.0;
+update.cpp:    neighbor->skin = 2.0;
+update.cpp:    neighbor->skin = 0.001;
+update.cpp:    neighbor->skin = 0.1;
+verlet.cpp:  if (neighbor->style) neighbor->setup_bins();
+verlet.cpp:  neighbor->build();
+verlet.cpp:  neighbor->ncalls = 0;
+verlet.cpp:    nflag = neighbor->decide();
+verlet.cpp:	if (neighbor->style) neighbor->setup_bins();
+verlet.cpp:      neighbor->build();
+verlet.cpp:  if (neighbor->includegroup == 0) {
