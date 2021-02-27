@@ -1,4 +1,4 @@
-# Coagulation Cascade
+# LAMMPS for Coagulation Cascade Modeling
 ## Compile source code
 ```
 >> cd src/
@@ -38,5 +38,4 @@ publication, unless a permission from the repo owner is given.**
   pages={20200834},
   year={2021},
   publisher={The Royal Society}
-}
 ```
