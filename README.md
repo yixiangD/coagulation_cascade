@@ -28,5 +28,15 @@ publication, unless a permission from the repo owner is given.**
 
 
 **If you use this repo for your academic research, we require a citation to the following publication.**
-
-TBA
+```
+@article{yazdani2021integrating,
+  title={Integrating blood cell mechanics, platelet adhesive dynamics and coagulation cascade for modelling thrombus formation in normal and diabetic blood},
+  author={Yazdani, Alireza and Deng, Yixiang and Li, He and Javadi, Elahe and Li, Zhen and Jamali, Safa and Lin, Chensen and Humphrey, Jay D and Mantzoros, Christos S and Em Karniadakis, George},
+  journal={Journal of the Royal Society Interface},
+  volume={18},
+  number={175},
+  pages={20200834},
+  year={2021},
+  publisher={The Royal Society}
+}
+```
