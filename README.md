@@ -12,7 +12,7 @@
 ```
 >> ../../lmp_stam < chan.equil.run
 ```
-### 2nd: add a driven force and allow chemical species propagattion
+### 2nd: add a driven force and allow chemical species advection and diffusion
 ```
 >> ../../lmp_stam < chan.rheo.run
 ```
