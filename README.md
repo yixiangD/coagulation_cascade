@@ -10,15 +10,15 @@
 ```
 ### 1st: run the system to equilibrium, without force
 ```
->> ../../lmp_stam < chan.equil.run
+>> ../../src/lmp_stam < chan.equil.run
 ```
 ### 2nd: add a driven force and allow chemical species advection and diffusion
 ```
->> ../../lmp_stam < chan.rheo.run
+>> ../../src/lmp_stam < chan.rheo.run
 ```
 ### 3nd: turn on adhesion force, enable platelet adhesion on wall
 ```
->> ../../lmp_stam < chan.adr.run
+>> ../../src/lmp_stam < chan.adr.run
 ```
 
 # Copyright
